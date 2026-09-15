@@ -1,0 +1,53 @@
+config         variant   best_F1_alert   node_cov        F1@20           node_F1         
+identity+rate  base      0.486±0.208     0.487±0.209     0.183±0.147     0.124±0.090     
+identity+rate  no_bfs    0.024±0.058     0.014±0.035     0.014±0.035     0.124±0.090     
+identity+rate  no_rank   0.566±0.186     0.533±0.171     0.239±0.173     0.124±0.090     
+identity+rate  bfs_q50   0.469±0.217     0.483±0.312     0.214±0.097     0.124±0.090     
+identity+rate  bfs_q90   0.304±0.287     0.256±0.272     0.082±0.068     0.124±0.090     
+identity+rate  w100      0.566±0.186     0.533±0.171     0.239±0.173     0.124±0.090     
+identity+rate  w050      0.466±0.223     0.476±0.224     0.173±0.131     0.124±0.090     
+identity+rate  w000      0.229±0.136     0.383±0.299     0.093±0.076     0.124±0.090     
+TeRed+naive    base      0.624±0.142     0.576±0.205     0.190±0.059     0.169±0.072     
+TeRed+naive    no_bfs    0.061±0.055     0.035±0.031     0.042±0.029     0.169±0.072     
+TeRed+naive    no_rank   0.712±0.161     0.634±0.156     0.301±0.126     0.169±0.072     
+TeRed+naive    bfs_q50   0.600±0.181     0.610±0.225     0.238±0.059     0.169±0.072     
+TeRed+naive    bfs_q90   0.209±0.240     0.241±0.290     0.000±0.000     0.169±0.072     
+TeRed+naive    w100      0.712±0.161     0.634±0.156     0.301±0.126     0.169±0.072     
+TeRed+naive    w050      0.489±0.064     0.576±0.205     0.183±0.049     0.169±0.072     
+TeRed+naive    w000      0.073±0.068     0.174±0.289     0.046±0.034     0.169±0.072     
+TeRed+RATE     base      0.612±0.161     0.572±0.205     0.202±0.065     0.169±0.071     
+TeRed+RATE     no_bfs    0.061±0.055     0.035±0.031     0.042±0.029     0.169±0.071     
+TeRed+RATE     no_rank   0.661±0.168     0.658±0.143     0.311±0.112     0.169±0.071     
+TeRed+RATE     bfs_q50   0.602±0.181     0.609±0.250     0.245±0.057     0.169±0.071     
+TeRed+RATE     bfs_q90   0.212±0.211     0.277±0.296     0.000±0.000     0.169±0.071     
+TeRed+RATE     w100      0.661±0.168     0.658±0.143     0.311±0.112     0.169±0.071     
+TeRed+RATE     w050      0.550±0.139     0.560±0.223     0.192±0.076     0.169±0.071     
+TeRed+RATE     w000      0.139±0.120     0.320±0.332     0.094±0.056     0.169±0.071     
+
+config         variant   F1@1     F1@2     F1@3     F1@5     F1@10    F1@20    
+identity+rate  base      0.425    0.394    0.337    0.278    0.247    0.183    
+identity+rate  sort_cmax 0.425    0.379    0.388    0.356    0.343    0.239    
+identity+rate  sort_p95  0.082    0.221    0.183    0.148    0.167    0.235    
+TeRed+naive    base      0.167    0.545    0.532    0.445    0.289    0.190    
+TeRed+naive    sort_cmax 0.506    0.558    0.575    0.468    0.403    0.301    
+TeRed+naive    sort_p95  0.029    0.026    0.056    0.102    0.070    0.151    
+TeRed+RATE     base      0.234    0.428    0.475    0.456    0.312    0.202    
+TeRed+RATE     sort_cmax 0.501    0.558    0.550    0.476    0.405    0.311    
+TeRed+RATE     sort_p95  0.029    0.080    0.097    0.108    0.179    0.160    
+
+config         variant               node_best_f1      best_F1_alert   
+identity+rate  (full v4 base)        0.124±0.090       0.486±0.208     
+identity+rate  drop log_deg          0.021±0.020       0.330±0.240     
+identity+rate  drop out_in_ratio     0.027±0.021       0.494±0.256     
+identity+rate  drop nbr_type_div     0.124±0.090       0.486±0.208     
+identity+rate  drop self_loop        0.199±0.125       0.180±0.201     
+TeRed+naive    (full v4 base)        0.169±0.072       0.624±0.142     
+TeRed+naive    drop log_deg          0.083±0.042       0.593±0.245     
+TeRed+naive    drop out_in_ratio     0.083±0.073       0.582±0.123     
+TeRed+naive    drop nbr_type_div     0.169±0.072       0.624±0.142     
+TeRed+naive    drop self_loop        0.198±0.087       0.373±0.336     
+TeRed+RATE     (full v4 base)        0.169±0.071       0.612±0.161     
+TeRed+RATE     drop log_deg          0.083±0.040       0.629±0.187     
+TeRed+RATE     drop out_in_ratio     0.094±0.086       0.665±0.165     
+TeRed+RATE     drop nbr_type_div     0.169±0.071       0.612±0.161     
+TeRed+RATE     drop self_loop        0.198±0.087       0.395±0.310     

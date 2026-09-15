@@ -1,0 +1,12 @@
+{
+  "dataset": "streamspot",
+  "operator": "tered",
+  "encoding": "rate",
+  "gids": "0-6,500-501",
+  "split": "scenes",
+  "tape_dim": 8,
+  "tape_base": 10000,
+  "min_support": 5,
+  "coverage": 1.0,
+  "seed": 0
+}

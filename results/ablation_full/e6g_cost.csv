@@ -1,0 +1,4 @@
+spec,n_nodes_orig,n_edges_orig,n_nodes_red,n_edges_red,identity_parse_s,identity_reduce_s,identity_encode_s,identity_fit_s,identity_score_s,identity_alert_s,identity_stage_total_s,identity_end2end_s,rss_gb,tered_parse_s,tered_reduce_s,tered_encode_s,tered_fit_s,tered_score_s,tered_alert_s,tered_stage_total_s,tered_end2end_s
+bin.119@500000,18635,476913,17159,370452,17.7,1.1,1.1,0.0,0.0,0.7,1.8,20.6,2.13,17.7,561.5,0.9,0.0,0.0,0.6,1.4,580.6
+bin.6@400000,24507,370937,22545,283605,14.7,0.9,0.9,0.0,0.0,0.6,1.5,17.0,2.2,14.7,1004.7,0.7,0.0,0.0,0.5,1.2,1020.6
+bin.7@400000,17797,374995,15986,329134,14.3,0.8,0.9,0.0,0.0,0.6,1.5,16.7,2.2,14.3,639.2,0.8,0.0,0.0,0.5,1.3,654.9

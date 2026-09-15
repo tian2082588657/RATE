@@ -1,0 +1,60 @@
+[alert] ground truth: 124 UUIDs
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.1.gz -> 30538 节点 391954 边 (读取 400001 记录)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.2.gz -> 9536 节点 378157 边 (读取 400001 记录)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.3.gz -> 16494 节点 378948 边 (读取 400001 记录)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.4.gz -> 10956 节点 395213 边 (读取 400001 记录)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.5.gz -> 7559 节点 383331 边 (读取 400001 记录)
+[alert] 训练图 5 张解析完成 (68s)
+[alert] 模板: b36c705fde93a797.jsonl -> 173 个 (share_k=-1)
+[alert] 训练图归约完成 (4s, 缓存命中)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.116.gz -> 287061 节点 9333694 边 (读取 10000000 记录)
+
+[alert] ===== bin.116: 287061 节点 9333694 边 records=10000000 GT命中=34 (攻击) =====
+[alert] bin.116 归约: id 287061->287061, tered 287061->275848 (375s)
+  [identity+rate] n_gt=34 alerts=20 TP=5 alert_P=0.25 cov=0.29 F1=0.270 bestF1=0.303@b16 first_hit=1 top1=1 nodes=3432 prec=0.003 flat_cov=0.18 (44.9s)
+  [TeRed+naive] n_gt=46 alerts=20 TP=5 alert_P=0.25 cov=0.37 F1=0.298 bestF1=0.465@b8 first_hit=1 top1=1 nodes=2017 prec=0.008 flat_cov=0.13 (33.8s)
+  [TeRed+RATE] n_gt=46 alerts=20 TP=5 alert_P=0.25 cov=0.39 F1=0.305 bestF1=0.425@b8 first_hit=1 top1=1 nodes=2418 prec=0.007 flat_cov=0.13 (34.2s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.117.gz -> 267500 节点 9393683 边 (读取 10000000 记录)
+
+[alert] ===== bin.117: 267500 节点 9393683 边 records=10000000 GT命中=30 (攻击) =====
+[alert] bin.117 归约: id 267500->267500, tered 267500->257690 (379s)
+  [identity+rate] n_gt=30 alerts=20 TP=8 alert_P=0.40 cov=0.40 F1=0.400 bestF1=0.444@b16 first_hit=1 top1=1 nodes=3425 prec=0.004 flat_cov=0.27 (48.8s)
+  [TeRed+naive] n_gt=35 alerts=20 TP=8 alert_P=0.40 cov=0.54 F1=0.461 bestF1=0.654@b3 first_hit=1 top1=1 nodes=2340 prec=0.008 flat_cov=0.29 (42.1s)
+  [TeRed+RATE] n_gt=35 alerts=20 TP=9 alert_P=0.45 cov=0.57 F1=0.503 bestF1=0.679@b4 first_hit=1 top1=1 nodes=2900 prec=0.007 flat_cov=0.29 (39.7s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.118.gz -> 265865 节点 9399067 边 (读取 10000000 记录)
+
+[alert] ===== bin.118: 265865 节点 9399067 边 records=10000000 GT命中=27 (攻击) =====
+[alert] bin.118 归约: id 265865->265865, tered 265865->256447 (385s)
+  [identity+rate] n_gt=27 alerts=20 TP=9 alert_P=0.45 cov=0.56 F1=0.497 bestF1=0.606@b12 first_hit=1 top1=1 nodes=3630 prec=0.004 flat_cov=0.26 (45.6s)
+  [TeRed+naive] n_gt=34 alerts=20 TP=6 alert_P=0.30 cov=0.62 F1=0.404 bestF1=0.667@b1 first_hit=1 top1=1 nodes=2711 prec=0.008 flat_cov=0.32 (37.4s)
+  [TeRed+RATE] n_gt=34 alerts=20 TP=6 alert_P=0.30 cov=0.62 F1=0.404 bestF1=0.553@b1 first_hit=1 top1=1 nodes=2562 prec=0.008 flat_cov=0.32 (36.0s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.119.gz -> 18635 节点 476913 边 (读取 500001 记录)
+
+[alert] ===== bin.119@500000: 18635 节点 476913 边 records=500001 GT命中=10 (攻击) =====
+[alert] bin.119 归约: id 18635->18635, tered 18635->17252 (19s)
+  [identity+rate] n_gt=10 alerts=10 TP=1 alert_P=0.10 cov=0.80 F1=0.178 bestF1=0.889@b1 first_hit=1 top1=1 nodes=1222 prec=0.006 flat_cov=0.20 (6.6s)
+  [TeRed+naive] n_gt=15 alerts=20 TP=1 alert_P=0.05 cov=0.87 F1=0.095 bestF1=0.929@b1 first_hit=1 top1=1 nodes=1058 prec=0.012 flat_cov=0.13 (5.0s)
+  [TeRed+RATE] n_gt=15 alerts=20 TP=2 alert_P=0.10 cov=0.87 F1=0.179 bestF1=0.846@b1 first_hit=1 top1=1 nodes=960 prec=0.013 flat_cov=0.13 (5.0s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.120.gz -> 295765 节点 9324081 边 (读取 10000000 记录)
+
+[alert] ===== bin.120: 295765 节点 9324081 边 records=10000000 GT命中=21 (攻击) =====
+[alert] bin.120 归约: id 295765->295765, tered 295765->285794 (385s)
+  [identity+rate] n_gt=21 alerts=20 TP=4 alert_P=0.20 cov=0.43 F1=0.273 bestF1=0.385@b1 first_hit=1 top1=1 nodes=3610 prec=0.003 flat_cov=0.29 (39.6s)
+  [TeRed+naive] n_gt=26 alerts=20 TP=7 alert_P=0.35 cov=0.54 F1=0.424 bestF1=0.556@b3 first_hit=1 top1=1 nodes=2517 prec=0.006 flat_cov=0.27 (32.1s)
+  [TeRed+RATE] n_gt=26 alerts=20 TP=5 alert_P=0.25 cov=0.65 F1=0.362 bestF1=0.471@b1 first_hit=1 top1=1 nodes=2891 prec=0.006 flat_cov=0.27 (32.4s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.6.gz -> 24507 节点 370937 边 (读取 400001 记录)
+
+[alert] ===== bin.6@400000: 24507 节点 370937 边 records=400001 GT命中=6 (攻击) =====
+[alert] bin.6 归约: id 24507->24507, tered 24507->22350 (15s)
+  [identity+rate] n_gt=6 alerts=20 TP=3 alert_P=0.15 cov=0.50 F1=0.231 bestF1=0.667@b2 first_hit=1 top1=1 nodes=889 prec=0.003 flat_cov=0.00 (5.9s)
+  [TeRed+naive] n_gt=9 alerts=20 TP=2 alert_P=0.10 cov=0.78 F1=0.177 bestF1=0.875@b2 first_hit=1 top1=1 nodes=613 prec=0.011 flat_cov=0.00 (4.5s)
+  [TeRed+RATE] n_gt=9 alerts=20 TP=2 alert_P=0.10 cov=0.78 F1=0.177 bestF1=0.875@b2 first_hit=1 top1=1 nodes=619 prec=0.011 flat_cov=0.00 (4.5s)
+[darpa:e5_cadets_bin] ta1-cadets-1-e5-official-2.bin.7.gz -> 17797 节点 374995 边 (读取 400001 记录)
+
+[alert] ===== bin.7@400000: 17797 节点 374995 边 records=400001 GT命中=8 (攻击) =====
+[alert] bin.7 归约: id 17797->17797, tered 17797->16295 (15s)
+  [identity+rate] n_gt=8 alerts=18 TP=3 alert_P=0.17 cov=0.75 F1=0.273 bestF1=0.667@b5 first_hit=1 top1=1 nodes=1045 prec=0.006 flat_cov=0.00 (6.1s)
+  [TeRed+naive] n_gt=11 alerts=20 TP=3 alert_P=0.15 cov=0.73 F1=0.249 bestF1=0.842@b3 first_hit=1 top1=1 nodes=759 prec=0.011 flat_cov=0.09 (4.7s)
+  [TeRed+RATE] n_gt=11 alerts=20 TP=3 alert_P=0.15 cov=0.73 F1=0.249 bestF1=0.778@b2 first_hit=1 top1=1 nodes=770 prec=0.010 flat_cov=0.09 (4.7s)
+
+[alert] 全部完成 (2181s), 结果追加至 results/e6_alert_full_v2.csv

@@ -1,0 +1,81 @@
+=== base 基准核对（e6d base  vs  e6_alert_full_v2.csv, best_F1_alert）===
+  21/21 行一致 (容差 0.005)
+
+=== 表 A1 · 告警管线解构（7 文件 mean±std）===
+config         variant       best_F1_alert   node_cov        alert_P         node_F1         
+identity+rate  base          0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+identity+rate  legacy_agg    0.486±0.208     0.487±0.209     0.188±0.098     0.124±0.090     
+identity+rate  legacy_cmax   0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+identity+rate  legacy_w1     0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+identity+rate  no_bfs        0.024±0.058     0.014±0.035     0.014±0.035     0.124±0.090     
+identity+rate  no_rank       0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+identity+rate  bfs_q50       0.590±0.230     0.593±0.237     0.243±0.056     0.124±0.090     
+identity+rate  bfs_q90       0.316±0.279     0.256±0.272     0.151±0.098     0.124±0.090     
+identity+rate  w100          (缺失)
+identity+rate  w050          0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+identity+rate  w000          0.566±0.186     0.533±0.171     0.245±0.122     0.124±0.090     
+TeRed+naive    base          0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+naive    legacy_agg    0.624±0.142     0.576±0.205     0.121±0.045     0.169±0.072     
+TeRed+naive    legacy_cmax   0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+naive    legacy_w1     0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+naive    no_bfs        0.061±0.055     0.035±0.031     0.093±0.082     0.169±0.072     
+TeRed+naive    no_rank       0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+naive    bfs_q50       0.691±0.182     0.664±0.184     0.243±0.129     0.169±0.072     
+TeRed+naive    bfs_q90       0.280±0.294     0.241±0.290     0.142±0.127     0.169±0.072     
+TeRed+naive    w100          (缺失)
+TeRed+naive    w050          0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+naive    w000          0.712±0.161     0.634±0.156     0.229±0.122     0.169±0.072     
+TeRed+RATE     base          0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+TeRed+RATE     legacy_agg    0.612±0.161     0.572±0.205     0.129±0.052     0.169±0.071     
+TeRed+RATE     legacy_cmax   0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+TeRed+RATE     legacy_w1     0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+TeRed+RATE     no_bfs        0.061±0.055     0.035±0.031     0.093±0.082     0.169±0.071     
+TeRed+RATE     no_rank       0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+TeRed+RATE     bfs_q50       0.700±0.174     0.679±0.198     0.243±0.121     0.169±0.071     
+TeRed+RATE     bfs_q90       0.333±0.334     0.277±0.296     0.117±0.083     0.169±0.071     
+TeRed+RATE     w100          (缺失)
+TeRed+RATE     w050          0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+TeRed+RATE     w000          0.661±0.168     0.658±0.143     0.229±0.116     0.169±0.071     
+
+=== 表 A1b · 两处升级的 2x2 分解（7 文件 mean best_F1_alert）===
+config         w0.7+agg(旧)     w0.7+cmax       w1.0+agg        w1.0+cmax(新)    
+identity+rate  0.4855          0.5658          0.5658          0.5658          
+TeRed+naive    0.6244          0.7123          0.7123          0.7123          
+TeRed+RATE     0.6116          0.6610          0.6610          0.6610          
+
+=== 表 A3 · 预算 × 排序（7 文件 mean F1_alert@b）===
+config         variant       F1@1     F1@2     F1@3     F1@5     F1@10    F1@20    
+identity+rate  base          0.425    0.379    0.388    0.356    0.343    0.239    
+identity+rate  sort_p95      0.082    0.221    0.183    0.148    0.167    0.235    
+identity+rate  legacy_agg    0.425    0.394    0.337    0.278    0.247    0.183    
+TeRed+naive    base          0.506    0.558    0.575    0.468    0.403    0.301    
+TeRed+naive    sort_p95      0.029    0.026    0.056    0.102    0.070    0.151    
+TeRed+naive    legacy_agg    0.167    0.545    0.532    0.445    0.289    0.190    
+TeRed+RATE     base          0.501    0.558    0.550    0.476    0.405    0.311    
+TeRed+RATE     sort_p95      0.029    0.080    0.097    0.108    0.179    0.160    
+TeRed+RATE     legacy_agg    0.234    0.428    0.475    0.456    0.312    0.202    
+
+=== 表 A4 · v4 特征逐列消融（7 文件 mean±std）===
+config         variant               node_best_f1      best_F1_alert   node_cov        
+identity+rate  (full v4 base)        0.124±0.090       0.566±0.186     0.533±0.171     
+identity+rate  drop log_deg          0.021±0.020       0.372±0.175     0.336±0.176     
+identity+rate  drop out_in_ratio     0.027±0.021       0.531±0.204     0.502±0.225     
+identity+rate  drop self_loop        0.199±0.125       0.594±0.175     0.553±0.206     
+TeRed+naive    (full v4 base)        0.169±0.072       0.712±0.161     0.634±0.156     
+TeRed+naive    drop log_deg          0.083±0.042       0.610±0.241     0.518±0.223     
+TeRed+naive    drop out_in_ratio     0.083±0.073       0.667±0.148     0.580±0.148     
+TeRed+naive    drop self_loop        0.198±0.087       0.727±0.141     0.635±0.152     
+TeRed+RATE     (full v4 base)        0.169±0.071       0.661±0.168     0.658±0.143     
+TeRed+RATE     drop log_deg          0.083±0.040       0.650±0.178     0.574±0.169     
+TeRed+RATE     drop out_in_ratio     0.094±0.086       0.658±0.153     0.623±0.158     
+TeRed+RATE     drop self_loop        0.198±0.087       0.700±0.126     0.667±0.139     
+
+=== 附 · TeRed+RATE 逐文件明细（base new vs legacy_agg old）===
+file            new_F1    old_F1    delta     new_cov   old_cov   
+bin.116         0.4250    0.3571    +0.0679   0.3913    0.3043    
+bin.117         0.6792    0.6792    +0.0000   0.5714    0.5429    
+bin.118         0.5532    0.5532    +0.0000   0.6176    0.4412    
+bin.119@500000  0.8462    0.7536    +0.0926   0.8667    0.8667    
+bin.120         0.4706    0.4706    +0.0000   0.6538    0.3462    
+bin.6@400000    0.8750    0.8750    +0.0000   0.7778    0.7778    
+bin.7@400000    0.7778    0.5926    +0.1852   0.7273    0.7273    

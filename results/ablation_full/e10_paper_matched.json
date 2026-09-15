@@ -1,0 +1,76 @@
+{
+  "test_dates": [
+    "2019-05-16",
+    "2019-05-17"
+  ],
+  "train_dates": [
+    "2019-05-08",
+    "2019-05-09",
+    "2019-05-11",
+    "2019-05-12"
+  ],
+  "windows": 154,
+  "config": {
+    "tape_dim": 8,
+    "tape_base": 10000.0,
+    "top_k": 100,
+    "bfs_q": 75.0,
+    "min_cluster": 3,
+    "max_cluster": 200,
+    "max_alerts": 20,
+    "mu": 1.0,
+    "reduction": "none (identity graphs)"
+  },
+  "identity": {
+    "n_win": 154,
+    "n_win_gt": 33,
+    "alerts": 2300,
+    "alerts_hit": 9,
+    "gt_total": 87,
+    "gt_cov": 17,
+    "nodes": 4708606,
+    "alert_precision": 0.0039,
+    "gt_coverage": 0.1954,
+    "alert_f1": 0.0077,
+    "alerts_per_window": 14.935
+  },
+  "count": {
+    "n_win": 154,
+    "n_win_gt": 33,
+    "alerts": 2757,
+    "alerts_hit": 13,
+    "gt_total": 87,
+    "gt_cov": 24,
+    "nodes": 4708606,
+    "alert_precision": 0.0047,
+    "gt_coverage": 0.2759,
+    "alert_f1": 0.0093,
+    "alerts_per_window": 17.903
+  },
+  "rate": {
+    "n_win": 154,
+    "n_win_gt": 33,
+    "alerts": 2757,
+    "alerts_hit": 13,
+    "gt_total": 87,
+    "gt_cov": 24,
+    "nodes": 4708606,
+    "alert_precision": 0.0047,
+    "gt_coverage": 0.2759,
+    "alert_f1": 0.0093,
+    "alerts_per_window": 17.903
+  },
+  "rate_ratio": {
+    "n_win": 154,
+    "n_win_gt": 33,
+    "alerts": 2728,
+    "alerts_hit": 13,
+    "gt_total": 87,
+    "gt_cov": 26,
+    "nodes": 4708606,
+    "alert_precision": 0.0048,
+    "gt_coverage": 0.2989,
+    "alert_f1": 0.0094,
+    "alerts_per_window": 17.714
+  }
+}

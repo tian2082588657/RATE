@@ -1,0 +1,8 @@
+# RATE (Reduction-Aware Topology Encoding) 合并仓库 — 最小运行依赖
+# 安装：pip install -r requirements.txt -i https://pypi.org/simple --trusted-host pypi.org --trusted-host files.pythonhosted.org
+# 说明：解析数据集 + 归约 + RATE/naive 特征 + 冒烟检测只需 numpy 与 networkx。
+#       GNN 语义特征（GraphSAGE）与 GPU 训练为可选路径，需另装 torch：
+#       pip install torch --index-url https://download.pytorch.org/whl/cpu   (本机 CPU)
+#       服务器(your-server-host, RTX3060)上装对应 CUDA 版即可，代码不变。
+numpy>=1.26
+networkx>=3.1

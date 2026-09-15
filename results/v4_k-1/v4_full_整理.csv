@@ -1,0 +1,27 @@
+# v4 全量原始数据（来自服务器 /TeRed+RATE/code/results/，2026-09-07 17:5x 完成）
+# 注：此文件为便于本地查看合并的整理版；权威原始 CSV 仍在服务器
+
+## ===== v4 bin.116 (atfull) =====
+identity:  best_F1=0.1412  P@50=0.10  TP=16 FP=38228  ROC=0.192  PR=0.0154
+naive:     best_F1=0.1739  P@50=0.12  TP=15 FP=33808  ROC=0.194  PR=0.0213
+RATE:      best_F1=0.1739  P@50=0.12  TP=16 FP=33841  ROC=0.190  PR=0.0214
+
+## ===== v4 bin.117 (atfull) =====
+identity:  best_F1=0.1579  P@50=0.12  TP=13 FP=35028  ROC=0.099  PR=0.0244
+naive:     best_F1=0.2133  P@50=0.16  TP=15 FP=30948  ROC=0.103  PR=0.0377
+RATE:      best_F1=0.2133  P@50=0.16  TP=15 FP=30967  ROC=0.102  PR=0.0378
+
+## ===== v4 bin.118 (atfull) =====
+identity:  best_F1=0.1351  P@50=0.10  TP=12 FP=35416  ROC=0.098  PR=0.0264
+naive:     best_F1=0.2018  P@50=0.14  TP=15 FP=31345  ROC=0.104  PR=0.0388
+RATE:      best_F1=0.2000  P@50=0.14  TP=15 FP=31370  ROC=0.100  PR=0.0388
+
+## ===== v4 bin.120 (atfull) =====
+identity:  best_F1=0.1389  P@50=0.08  TP=11 FP=39799  ROC=0.088  PR=0.0214
+naive:     best_F1=0.2034  P@50=0.12  TP=10 FP=35703  ROC=0.107  PR=0.0374
+RATE:      best_F1=0.2034  P@50=0.12  TP=10 FP=35697  ROC=0.104  PR=0.0374
+
+## ===== v4 bin.119 (at500k 截断) =====
+identity:  best_F1=0.2857  P@50=0.04  TP=3 FP=1260  ROC=0.098  PR=0.0701
+naive:     best_F1=0.2353  P@50=0.04  TP=2 FP=510   ROC=0.094  PR=0.0710
+RATE:      best_F1=0.2353  P@50=0.04  TP=2 FP=512   ROC=0.086  PR=0.0717

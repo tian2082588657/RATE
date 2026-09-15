@@ -1,0 +1,43 @@
+### 1. positives per partition
+file              orig_gt   kept  absorbed  red_gt  nodes_red
+bin.116                34     20        14      46     275848
+bin.117                30     19        11      35     257690
+bin.118                27     18         9      34     256447
+bin.119@500000         10      5         5      15      17252
+bin.120                21     14         7      26     285794
+bin.6@400000            6      3         3       9      22350
+bin.7@400000            8      3         5      11      16295
+  orig_gt range = 6..34  (sum=544)
+  reduced gt range = 6..46
+
+### 2. reduced-unit load (n_alerted_nodes), e6_alert_full_v3
+  identity+rate  load_mean=2063.4 cov=0.5366 @5=
+  TeRed+naive    load_mean=984.3 cov=0.6027 @5=
+  TeRed+RATE     load_mean=1161.6 cov=0.5853 @5=
+  TeRed+RATE*    load_mean=1190.4 cov=0.6066 @5=
+
+### 3. A4 v4-drop (config=TeRed+RATE*, encoding=rate_ratio)
+  base                   nodeF1=0.1728 @5=0.4830 @10=0.4433 cov=0.7028 load=1810
+  v4_drop_log_deg        nodeF1=0.1585 @5=0.4365 @10=0.3933 cov=0.6722 load=1925
+  v4_drop_out_in_ratio   nodeF1=0.1564 @5=0.5440 @10=0.3799 cov=0.6133 load=1818
+  v4_drop_self_loop      nodeF1=0.1976 @5=0.5297 @10=0.4706 cov=0.7238 load=1796
+
+### 4. 关键配对比较（per-file, config=TeRed+RATE*）
+  RATE* vs count : nodeF1: <missing>
+  RATE* vs count : alert@10: <missing>
+  RATE* vs scalar: nodeF1: <missing>
+  RATE* vs none  : nodeF1: <missing>
+
+### 5. alert composition (reduced unit): alerted nodes & GT inside
+  identity+rate  alerts=18.3 P_alert=0.1881 alerted_nodes=2063 node_prec_in_alerts=0.0045 cov=0.5366
+  TeRed+naive    alerts=20.0 P_alert=0.1214 alerted_nodes=984 node_prec_in_alerts=0.0132 cov=0.6027
+  TeRed+RATE*    alerts=20.0 P_alert=0.1500 alerted_nodes=1190 node_prec_in_alerts=0.0115 cov=0.6066
+
+### 6. common-unit per-file
+  bin.116          identity+rate=0.206/F1=0.174 TeRed+naive=0.206/F1=0.135 TeRed+RATE=0.265/F1=0.145 TeRed+RATE*=0.206/F1=0.135
+  bin.117          identity+rate=0.333/F1=0.286 TeRed+naive=0.467/F1=0.280 TeRed+RATE=0.500/F1=0.333 TeRed+RATE*=0.500/F1=0.333
+  bin.118          identity+rate=0.667/F1=0.500 TeRed+naive=0.444/F1=0.163 TeRed+RATE=0.333/F1=0.154 TeRed+RATE*=0.333/F1=0.154
+  bin.119@500000   identity+rate=0.800/F1=0.178 TeRed+naive=0.800/F1=0.094 TeRed+RATE=0.800/F1=0.178 TeRed+RATE*=0.800/F1=0.178
+  bin.120          identity+rate=0.333/F1=0.154 TeRed+naive=0.333/F1=0.207 TeRed+RATE=0.286/F1=0.148 TeRed+RATE*=0.429/F1=0.316
+  bin.6@400000     identity+rate=0.667/F1=0.245 TeRed+naive=0.667/F1=0.174 TeRed+RATE=0.667/F1=0.174 TeRed+RATE*=0.667/F1=0.174
+  bin.7@400000     identity+rate=0.750/F1=0.273 TeRed+naive=0.750/F1=0.250 TeRed+RATE=0.750/F1=0.250 TeRed+RATE*=0.750/F1=0.250

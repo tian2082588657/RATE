@@ -1,0 +1,22 @@
+no csv
+
+=== detector=cosine ===
+config                   n  ROC_AUC   PR_AUC   bestF1      FPR    P@100       @5      @10      @20      cov
+
+=== detector=gnn ===
+config                   n  ROC_AUC   PR_AUC   bestF1      FPR    P@100       @5      @10      @20      cov
+
+=== per-file ROC_AUC ===
+  -- cosine --
+         bin.116      bin.117      bin.118  bin.119@500      bin.120  bin.6@40000  bin.7@40000
+  -- gnn --
+         bin.116      bin.117      bin.118  bin.119@500      bin.120  bin.6@40000  bin.7@40000
+
+=== paired (GNN, node ROC_AUC) ===
+  gnn identity vs tered+dual_naive: <missing>
+  gnn identity vs tered+rate: <missing>
+  gnn identity vs tered+rate_ratio: <missing>
+  gnn identity vs tered+rate_single: <missing>
+  gnn identity vs tered+none: <missing>
+
+=== cosine vs gnn on the SAME config (node ROC_AUC) ===

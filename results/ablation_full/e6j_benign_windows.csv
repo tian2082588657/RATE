@@ -1,0 +1,11 @@
+held_out,config,n_nodes,n_edges,flagged_nodes,n_alerts,n_alerted_nodes,gt_in_window,alerts_with_gt,alerts_without_gt,gt_covered,max_cluster,mean_cluster
+bin.1,identity+rate,30538,391954,271,20,1083,6,3,17,6,200,54.1
+bin.1,TeRed+RATE*,30094,239617,123,9,707,1,1,8,1,200,78.6
+bin.2,identity+rate,9536,378157,1033,12,848,7,3,9,5,200,70.7
+bin.2,TeRed+RATE*,8356,331151,308,20,798,2,0,20,0,200,39.9
+bin.3,identity+rate,16494,378948,1056,20,1172,6,4,16,6,200,58.6
+bin.3,TeRed+RATE*,15345,196017,378,20,569,1,0,20,0,200,28.4
+bin.4,identity+rate,10956,395213,307,20,748,6,2,18,5,200,37.4
+bin.4,TeRed+RATE*,10457,329836,74,11,536,2,1,10,1,200,48.7
+bin.5,identity+rate,7559,383331,1330,20,294,5,2,18,4,200,14.7
+bin.5,TeRed+RATE*,6622,343199,538,20,261,2,1,19,1,200,13.1

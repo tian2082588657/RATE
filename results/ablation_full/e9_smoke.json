@@ -1,0 +1,45 @@
+{
+  "epoch": 3,
+  "windows": 154,
+  "result": {
+    "Kairos": {
+      "n_win": 154,
+      "n_win_gt": 33,
+      "alerts": 2606,
+      "alerts_hit": 23,
+      "gt_total": 87,
+      "gt_cov": 37,
+      "nodes": 4708606,
+      "alert_precision": 0.0088,
+      "gt_coverage": 0.4253,
+      "alert_f1": 0.0173,
+      "alerts_per_window": 16.922
+    },
+    "FLASH": {
+      "n_win": 154,
+      "n_win_gt": 33,
+      "alerts": 1845,
+      "alerts_hit": 11,
+      "gt_total": 87,
+      "gt_cov": 20,
+      "nodes": 4708606,
+      "alert_precision": 0.006,
+      "gt_coverage": 0.2299,
+      "alert_f1": 0.0116,
+      "alerts_per_window": 11.981
+    },
+    "ThreaTrace": {
+      "n_win": 154,
+      "n_win_gt": 33,
+      "alerts": 1871,
+      "alerts_hit": 0,
+      "gt_total": 87,
+      "gt_cov": 0,
+      "nodes": 4708606,
+      "alert_precision": 0.0,
+      "gt_coverage": 0.0,
+      "alert_f1": 0.0,
+      "alerts_per_window": 12.149
+    }
+  }
+}

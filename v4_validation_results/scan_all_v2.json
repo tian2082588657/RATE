@@ -1,0 +1,970 @@
+[
+ {
+  "file": "bin.0",
+  "error": "/TeRed+RATE/dataset/darpae5/cadets/bin.0 (短名也无法唯一定位: [])",
+  "runtime_s": 0.0
+ },
+ {
+  "file": "bin.1",
+  "full": "ta1-cadets-1-e5-official-2.bin.1.gz",
+  "records": 10000000,
+  "n_nodes": 227923,
+  "n_edges": 9442133,
+  "n_hit": 8,
+  "runtime_s": 386.4
+ },
+ {
+  "file": "bin.2",
+  "full": "ta1-cadets-1-e5-official-2.bin.2.gz",
+  "records": 10000000,
+  "n_nodes": 264711,
+  "n_edges": 9391221,
+  "n_hit": 8,
+  "runtime_s": 382.7
+ },
+ {
+  "file": "bin.3",
+  "full": "ta1-cadets-1-e5-official-2.bin.3.gz",
+  "records": 10000000,
+  "n_nodes": 219433,
+  "n_edges": 9524449,
+  "n_hit": 8,
+  "runtime_s": 379.4
+ },
+ {
+  "file": "bin.4",
+  "full": "ta1-cadets-1-e5-official-2.bin.4.gz",
+  "records": 10000000,
+  "n_nodes": 264020,
+  "n_edges": 9410710,
+  "n_hit": 8,
+  "runtime_s": 384.1
+ },
+ {
+  "file": "bin.5",
+  "full": "ta1-cadets-1-e5-official-2.bin.5.gz",
+  "records": 10000000,
+  "n_nodes": 231549,
+  "n_edges": 9498996,
+  "n_hit": 8,
+  "runtime_s": 383.9
+ },
+ {
+  "file": "bin.6",
+  "full": "ta1-cadets-1-e5-official-2.bin.6.gz",
+  "records": 10000000,
+  "n_nodes": 309292,
+  "n_edges": 9362207,
+  "n_hit": 8,
+  "runtime_s": 388.1
+ },
+ {
+  "file": "bin.7",
+  "full": "ta1-cadets-1-e5-official-2.bin.7.gz",
+  "records": 10000000,
+  "n_nodes": 176216,
+  "n_edges": 9623974,
+  "n_hit": 8,
+  "runtime_s": 375.2
+ },
+ {
+  "file": "bin.8",
+  "full": "ta1-cadets-1-e5-official-2.bin.8.gz",
+  "records": 10000000,
+  "n_nodes": 217255,
+  "n_edges": 9517420,
+  "n_hit": 8,
+  "runtime_s": 383.4
+ },
+ {
+  "file": "bin.9",
+  "full": "ta1-cadets-1-e5-official-2.bin.9.gz",
+  "records": 10000000,
+  "n_nodes": 282079,
+  "n_edges": 9354242,
+  "n_hit": 8,
+  "runtime_s": 382.5
+ },
+ {
+  "file": "bin.10",
+  "full": "ta1-cadets-1-e5-official-2.bin.10.gz",
+  "records": 10000000,
+  "n_nodes": 255731,
+  "n_edges": 9445991,
+  "n_hit": 8,
+  "runtime_s": 385.6
+ },
+ {
+  "file": "bin.11",
+  "full": "ta1-cadets-1-e5-official-2.bin.11.gz",
+  "records": 10000000,
+  "n_nodes": 266193,
+  "n_edges": 9402930,
+  "n_hit": 8,
+  "runtime_s": 391.5
+ },
+ {
+  "file": "bin.12",
+  "full": "ta1-cadets-1-e5-official-2.bin.12.gz",
+  "records": 10000000,
+  "n_nodes": 219771,
+  "n_edges": 9598680,
+  "n_hit": 8,
+  "runtime_s": 376.6
+ },
+ {
+  "file": "bin.13",
+  "full": "ta1-cadets-1-e5-official-2.bin.13.gz",
+  "records": 10000000,
+  "n_nodes": 194263,
+  "n_edges": 9611445,
+  "n_hit": 8,
+  "runtime_s": 385.7
+ },
+ {
+  "file": "bin.14",
+  "full": "ta1-cadets-1-e5-official-2.bin.14.gz",
+  "records": 10000000,
+  "n_nodes": 235101,
+  "n_edges": 9416472,
+  "n_hit": 8,
+  "runtime_s": 381.3
+ },
+ {
+  "file": "bin.15",
+  "full": "ta1-cadets-1-e5-official-2.bin.15.gz",
+  "records": 10000000,
+  "n_nodes": 188038,
+  "n_edges": 9597688,
+  "n_hit": 7,
+  "runtime_s": 376.8
+ },
+ {
+  "file": "bin.16",
+  "full": "ta1-cadets-1-e5-official-2.bin.16.gz",
+  "records": 10000000,
+  "n_nodes": 224635,
+  "n_edges": 9503140,
+  "n_hit": 8,
+  "runtime_s": 387.0
+ },
+ {
+  "file": "bin.17",
+  "full": "ta1-cadets-1-e5-official-2.bin.17.gz",
+  "records": 10000000,
+  "n_nodes": 279584,
+  "n_edges": 9350341,
+  "n_hit": 8,
+  "runtime_s": 391.0
+ },
+ {
+  "file": "bin.18",
+  "full": "ta1-cadets-1-e5-official-2.bin.18.gz",
+  "records": 10000000,
+  "n_nodes": 297821,
+  "n_edges": 9287876,
+  "n_hit": 8,
+  "runtime_s": 383.7
+ },
+ {
+  "file": "bin.19",
+  "full": "ta1-cadets-1-e5-official-2.bin.19.gz",
+  "records": 10000000,
+  "n_nodes": 287137,
+  "n_edges": 9342464,
+  "n_hit": 8,
+  "runtime_s": 389.6
+ },
+ {
+  "file": "bin.21",
+  "full": "ta1-cadets-1-e5-official-2.bin.21.gz",
+  "records": 10000000,
+  "n_nodes": 220905,
+  "n_edges": 9511297,
+  "n_hit": 8,
+  "runtime_s": 377.2
+ },
+ {
+  "file": "bin.22",
+  "full": "ta1-cadets-1-e5-official-2.bin.22.gz",
+  "records": 10000000,
+  "n_nodes": 227940,
+  "n_edges": 9493594,
+  "n_hit": 8,
+  "runtime_s": 379.4
+ },
+ {
+  "file": "bin.23",
+  "full": "ta1-cadets-1-e5-official-2.bin.23.gz",
+  "records": 10000000,
+  "n_nodes": 255658,
+  "n_edges": 9423917,
+  "n_hit": 8,
+  "runtime_s": 390.6
+ },
+ {
+  "file": "bin.24",
+  "full": "ta1-cadets-1-e5-official-2.bin.24.gz",
+  "records": 10000000,
+  "n_nodes": 295812,
+  "n_edges": 9419019,
+  "n_hit": 8,
+  "runtime_s": 384.3
+ },
+ {
+  "file": "bin.25",
+  "full": "ta1-cadets-1-e5-official-2.bin.25.gz",
+  "records": 10000000,
+  "n_nodes": 239373,
+  "n_edges": 9461120,
+  "n_hit": 8,
+  "runtime_s": 381.6
+ },
+ {
+  "file": "bin.26",
+  "full": "ta1-cadets-1-e5-official-2.bin.26.gz",
+  "records": 10000000,
+  "n_nodes": 250324,
+  "n_edges": 9431215,
+  "n_hit": 8,
+  "runtime_s": 385.6
+ },
+ {
+  "file": "bin.27",
+  "full": "ta1-cadets-1-e5-official-2.bin.27.gz",
+  "records": 10000000,
+  "n_nodes": 70922,
+  "n_edges": 9845614,
+  "n_hit": 8,
+  "runtime_s": 376.6
+ },
+ {
+  "file": "bin.28",
+  "full": "ta1-cadets-1-e5-official-2.bin.28.gz",
+  "records": 10000000,
+  "n_nodes": 170586,
+  "n_edges": 9598208,
+  "n_hit": 8,
+  "runtime_s": 373.1
+ },
+ {
+  "file": "bin.29",
+  "full": "ta1-cadets-1-e5-official-2.bin.29.gz",
+  "records": 10000000,
+  "n_nodes": 214930,
+  "n_edges": 9476029,
+  "n_hit": 8,
+  "runtime_s": 379.9
+ },
+ {
+  "file": "bin.30",
+  "full": "ta1-cadets-1-e5-official-2.bin.30.gz",
+  "records": 10000000,
+  "n_nodes": 224754,
+  "n_edges": 9475236,
+  "n_hit": 8,
+  "runtime_s": 382.6
+ },
+ {
+  "file": "bin.31",
+  "full": "ta1-cadets-1-e5-official-2.bin.31.gz",
+  "records": 10000000,
+  "n_nodes": 259491,
+  "n_edges": 9387104,
+  "n_hit": 8,
+  "runtime_s": 380.6
+ },
+ {
+  "file": "bin.32",
+  "full": "ta1-cadets-1-e5-official-2.bin.32.gz",
+  "records": 10000000,
+  "n_nodes": 267331,
+  "n_edges": 9435646,
+  "n_hit": 8,
+  "runtime_s": 387.7
+ },
+ {
+  "file": "bin.33",
+  "full": "ta1-cadets-1-e5-official-2.bin.33.gz",
+  "records": 10000000,
+  "n_nodes": 267160,
+  "n_edges": 9434651,
+  "n_hit": 8,
+  "runtime_s": 385.3
+ },
+ {
+  "file": "bin.34",
+  "full": "ta1-cadets-1-e5-official-2.bin.34.gz",
+  "records": 10000000,
+  "n_nodes": 262703,
+  "n_edges": 9409762,
+  "n_hit": 8,
+  "runtime_s": 384.5
+ },
+ {
+  "file": "bin.35",
+  "full": "ta1-cadets-1-e5-official-2.bin.35.gz",
+  "records": 10000000,
+  "n_nodes": 262755,
+  "n_edges": 9398111,
+  "n_hit": 8,
+  "runtime_s": 390.9
+ },
+ {
+  "file": "bin.36",
+  "full": "ta1-cadets-1-e5-official-2.bin.36.gz",
+  "records": 10000000,
+  "n_nodes": 212839,
+  "n_edges": 9541646,
+  "n_hit": 8,
+  "runtime_s": 384.7
+ },
+ {
+  "file": "bin.37",
+  "full": "ta1-cadets-1-e5-official-2.bin.37.gz",
+  "records": 10000000,
+  "n_nodes": 115673,
+  "n_edges": 9807479,
+  "n_hit": 8,
+  "runtime_s": 371.7
+ },
+ {
+  "file": "bin.38",
+  "full": "ta1-cadets-1-e5-official-2.bin.38.gz",
+  "records": 10000000,
+  "n_nodes": 141786,
+  "n_edges": 9733974,
+  "n_hit": 8,
+  "runtime_s": 378.1
+ },
+ {
+  "file": "bin.39",
+  "full": "ta1-cadets-1-e5-official-2.bin.39.gz",
+  "records": 10000000,
+  "n_nodes": 218298,
+  "n_edges": 9518008,
+  "n_hit": 8,
+  "runtime_s": 380.8
+ },
+ {
+  "file": "bin.41",
+  "full": "ta1-cadets-1-e5-official-2.bin.41.gz",
+  "records": 10000000,
+  "n_nodes": 316830,
+  "n_edges": 9369766,
+  "n_hit": 8,
+  "runtime_s": 389.8
+ },
+ {
+  "file": "bin.42",
+  "full": "ta1-cadets-1-e5-official-2.bin.42.gz",
+  "records": 10000000,
+  "n_nodes": 280450,
+  "n_edges": 9368322,
+  "n_hit": 8,
+  "runtime_s": 390.2
+ },
+ {
+  "file": "bin.43",
+  "full": "ta1-cadets-1-e5-official-2.bin.43.gz",
+  "records": 10000000,
+  "n_nodes": 227953,
+  "n_edges": 9469113,
+  "n_hit": 8,
+  "runtime_s": 384.7
+ },
+ {
+  "file": "bin.44",
+  "full": "ta1-cadets-1-e5-official-2.bin.44.gz",
+  "records": 10000000,
+  "n_nodes": 275129,
+  "n_edges": 9360762,
+  "n_hit": 8,
+  "runtime_s": 387.4
+ },
+ {
+  "file": "bin.45",
+  "full": "ta1-cadets-1-e5-official-2.bin.45.gz",
+  "records": 10000000,
+  "n_nodes": 271011,
+  "n_edges": 9361300,
+  "n_hit": 8,
+  "runtime_s": 386.8
+ },
+ {
+  "file": "bin.46",
+  "full": "ta1-cadets-1-e5-official-2.bin.46.gz",
+  "records": 10000000,
+  "n_nodes": 214104,
+  "n_edges": 9531624,
+  "n_hit": 8,
+  "runtime_s": 386.1
+ },
+ {
+  "file": "bin.47",
+  "full": "ta1-cadets-1-e5-official-2.bin.47.gz",
+  "records": 10000000,
+  "n_nodes": 250525,
+  "n_edges": 9422910,
+  "n_hit": 8,
+  "runtime_s": 399.2
+ },
+ {
+  "file": "bin.48",
+  "full": "ta1-cadets-1-e5-official-2.bin.48.gz",
+  "records": 10000000,
+  "n_nodes": 240055,
+  "n_edges": 9455353,
+  "n_hit": 8,
+  "runtime_s": 402.9
+ },
+ {
+  "file": "bin.49",
+  "full": "ta1-cadets-1-e5-official-2.bin.49.gz",
+  "records": 10000000,
+  "n_nodes": 234336,
+  "n_edges": 9482154,
+  "n_hit": 8,
+  "runtime_s": 383.6
+ },
+ {
+  "file": "bin.50",
+  "full": "ta1-cadets-1-e5-official-2.bin.50.gz",
+  "records": 10000000,
+  "n_nodes": 243685,
+  "n_edges": 9447323,
+  "n_hit": 8,
+  "runtime_s": 386.3
+ },
+ {
+  "file": "bin.51",
+  "full": "ta1-cadets-1-e5-official-2.bin.51.gz",
+  "records": 10000000,
+  "n_nodes": 267333,
+  "n_edges": 9525845,
+  "n_hit": 8,
+  "runtime_s": 383.2
+ },
+ {
+  "file": "bin.53",
+  "full": "ta1-cadets-1-e5-official-2.bin.53.gz",
+  "records": 10000000,
+  "n_nodes": 192662,
+  "n_edges": 9590072,
+  "n_hit": 8,
+  "runtime_s": 382.2
+ },
+ {
+  "file": "bin.54",
+  "full": "ta1-cadets-1-e5-official-2.bin.54.gz",
+  "records": 10000000,
+  "n_nodes": 189022,
+  "n_edges": 9581454,
+  "n_hit": 8,
+  "runtime_s": 380.6
+ },
+ {
+  "file": "bin.55",
+  "full": "ta1-cadets-1-e5-official-2.bin.55.gz",
+  "records": 10000000,
+  "n_nodes": 248021,
+  "n_edges": 9440370,
+  "n_hit": 8,
+  "runtime_s": 382.1
+ },
+ {
+  "file": "bin.56",
+  "full": "ta1-cadets-1-e5-official-2.bin.56.gz",
+  "records": 10000000,
+  "n_nodes": 227841,
+  "n_edges": 9482742,
+  "n_hit": 8,
+  "runtime_s": 377.9
+ },
+ {
+  "file": "bin.57",
+  "full": "ta1-cadets-1-e5-official-2.bin.57.gz",
+  "records": 10000000,
+  "n_nodes": 235434,
+  "n_edges": 9462805,
+  "n_hit": 8,
+  "runtime_s": 386.9
+ },
+ {
+  "file": "bin.58",
+  "full": "ta1-cadets-1-e5-official-2.bin.58.gz",
+  "records": 10000000,
+  "n_nodes": 226241,
+  "n_edges": 9495707,
+  "n_hit": 8,
+  "runtime_s": 382.5
+ },
+ {
+  "file": "bin.59",
+  "full": "ta1-cadets-1-e5-official-2.bin.59.gz",
+  "records": 10000000,
+  "n_nodes": 247373,
+  "n_edges": 9442159,
+  "n_hit": 8,
+  "runtime_s": 383.5
+ },
+ {
+  "file": "bin.60",
+  "full": "ta1-cadets-1-e5-official-2.bin.60.gz",
+  "records": 10000000,
+  "n_nodes": 232237,
+  "n_edges": 9483756,
+  "n_hit": 8,
+  "runtime_s": 385.8
+ },
+ {
+  "file": "bin.61",
+  "full": "ta1-cadets-1-e5-official-2.bin.61.gz",
+  "records": 10000000,
+  "n_nodes": 240654,
+  "n_edges": 9451101,
+  "n_hit": 8,
+  "runtime_s": 386.6
+ },
+ {
+  "file": "bin.62",
+  "full": "ta1-cadets-1-e5-official-2.bin.62.gz",
+  "records": 10000000,
+  "n_nodes": 301756,
+  "n_edges": 9464762,
+  "n_hit": 8,
+  "runtime_s": 391.1
+ },
+ {
+  "file": "bin.63",
+  "full": "ta1-cadets-1-e5-official-2.bin.63.gz",
+  "records": 10000000,
+  "n_nodes": 281116,
+  "n_edges": 9317942,
+  "n_hit": 8,
+  "runtime_s": 389.8
+ },
+ {
+  "file": "bin.64",
+  "full": "ta1-cadets-1-e5-official-2.bin.64.gz",
+  "records": 10000000,
+  "n_nodes": 220789,
+  "n_edges": 9448800,
+  "n_hit": 8,
+  "runtime_s": 389.0
+ },
+ {
+  "file": "bin.65",
+  "full": "ta1-cadets-1-e5-official-2.bin.65.gz",
+  "records": 10000000,
+  "n_nodes": 235886,
+  "n_edges": 9405972,
+  "n_hit": 8,
+  "runtime_s": 386.4
+ },
+ {
+  "file": "bin.66",
+  "full": "ta1-cadets-1-e5-official-2.bin.66.gz",
+  "records": 10000000,
+  "n_nodes": 180618,
+  "n_edges": 9614903,
+  "n_hit": 8,
+  "runtime_s": 384.7
+ },
+ {
+  "file": "bin.67",
+  "full": "ta1-cadets-1-e5-official-2.bin.67.gz",
+  "records": 10000000,
+  "n_nodes": 179618,
+  "n_edges": 9630650,
+  "n_hit": 8,
+  "runtime_s": 374.2
+ },
+ {
+  "file": "bin.68",
+  "full": "ta1-cadets-1-e5-official-2.bin.68.gz",
+  "records": 10000000,
+  "n_nodes": 220533,
+  "n_edges": 9510806,
+  "n_hit": 8,
+  "runtime_s": 378.0
+ },
+ {
+  "file": "bin.69",
+  "full": "ta1-cadets-1-e5-official-2.bin.69.gz",
+  "records": 10000000,
+  "n_nodes": 221615,
+  "n_edges": 9496801,
+  "n_hit": 8,
+  "runtime_s": 385.5
+ },
+ {
+  "file": "bin.70",
+  "full": "ta1-cadets-1-e5-official-2.bin.70.gz",
+  "records": 10000000,
+  "n_nodes": 317827,
+  "n_edges": 9335868,
+  "n_hit": 8,
+  "runtime_s": 393.4
+ },
+ {
+  "file": "bin.71",
+  "full": "ta1-cadets-1-e5-official-2.bin.71.gz",
+  "records": 10000000,
+  "n_nodes": 261259,
+  "n_edges": 9426377,
+  "n_hit": 8,
+  "runtime_s": 384.8
+ },
+ {
+  "file": "bin.73",
+  "full": "ta1-cadets-1-e5-official-2.bin.73.gz",
+  "records": 10000000,
+  "n_nodes": 263545,
+  "n_edges": 9397188,
+  "n_hit": 8,
+  "runtime_s": 382.1
+ },
+ {
+  "file": "bin.74",
+  "full": "ta1-cadets-1-e5-official-2.bin.74.gz",
+  "records": 10000000,
+  "n_nodes": 286021,
+  "n_edges": 9339628,
+  "n_hit": 8,
+  "runtime_s": 380.0
+ },
+ {
+  "file": "bin.75",
+  "full": "ta1-cadets-1-e5-official-2.bin.75.gz",
+  "records": 10000000,
+  "n_nodes": 281135,
+  "n_edges": 9345909,
+  "n_hit": 8,
+  "runtime_s": 382.1
+ },
+ {
+  "file": "bin.76",
+  "full": "ta1-cadets-1-e5-official-2.bin.76.gz",
+  "records": 10000000,
+  "n_nodes": 284050,
+  "n_edges": 9346705,
+  "n_hit": 8,
+  "runtime_s": 387.8
+ },
+ {
+  "file": "bin.77",
+  "full": "ta1-cadets-1-e5-official-2.bin.77.gz",
+  "records": 10000000,
+  "n_nodes": 275867,
+  "n_edges": 9376244,
+  "n_hit": 8,
+  "runtime_s": 386.1
+ },
+ {
+  "file": "bin.78",
+  "full": "ta1-cadets-1-e5-official-2.bin.78.gz",
+  "records": 10000000,
+  "n_nodes": 268873,
+  "n_edges": 9369323,
+  "n_hit": 8,
+  "runtime_s": 387.9
+ },
+ {
+  "file": "bin.79",
+  "full": "ta1-cadets-1-e5-official-2.bin.79.gz",
+  "records": 10000000,
+  "n_nodes": 265611,
+  "n_edges": 9397611,
+  "n_hit": 8,
+  "runtime_s": 391.7
+ },
+ {
+  "file": "bin.81",
+  "full": "ta1-cadets-1-e5-official-2.bin.81.gz",
+  "records": 10000000,
+  "n_nodes": 290741,
+  "n_edges": 9316877,
+  "n_hit": 8,
+  "runtime_s": 384.2
+ },
+ {
+  "file": "bin.82",
+  "full": "ta1-cadets-1-e5-official-2.bin.82.gz",
+  "records": 10000000,
+  "n_nodes": 266497,
+  "n_edges": 9392937,
+  "n_hit": 8,
+  "runtime_s": 390.9
+ },
+ {
+  "file": "bin.83",
+  "full": "ta1-cadets-1-e5-official-2.bin.83.gz",
+  "records": 10000000,
+  "n_nodes": 366889,
+  "n_edges": 9280395,
+  "n_hit": 8,
+  "runtime_s": 387.3
+ },
+ {
+  "file": "bin.84",
+  "full": "ta1-cadets-1-e5-official-2.bin.84.gz",
+  "records": 10000000,
+  "n_nodes": 286096,
+  "n_edges": 9339290,
+  "n_hit": 8,
+  "runtime_s": 390.2
+ },
+ {
+  "file": "bin.85",
+  "full": "ta1-cadets-1-e5-official-2.bin.85.gz",
+  "records": 10000000,
+  "n_nodes": 218687,
+  "n_edges": 9518611,
+  "n_hit": 8,
+  "runtime_s": 382.8
+ },
+ {
+  "file": "bin.86",
+  "full": "ta1-cadets-1-e5-official-2.bin.86.gz",
+  "records": 10000000,
+  "n_nodes": 246737,
+  "n_edges": 9444324,
+  "n_hit": 8,
+  "runtime_s": 389.2
+ },
+ {
+  "file": "bin.87",
+  "full": "ta1-cadets-1-e5-official-2.bin.87.gz",
+  "records": 10000000,
+  "n_nodes": 276971,
+  "n_edges": 9355454,
+  "n_hit": 8,
+  "runtime_s": 391.8
+ },
+ {
+  "file": "bin.88",
+  "full": "ta1-cadets-1-e5-official-2.bin.88.gz",
+  "records": 10000000,
+  "n_nodes": 226067,
+  "n_edges": 9503937,
+  "n_hit": 8,
+  "runtime_s": 384.0
+ },
+ {
+  "file": "bin.89",
+  "full": "ta1-cadets-1-e5-official-2.bin.89.gz",
+  "records": 10000000,
+  "n_nodes": 273338,
+  "n_edges": 9376516,
+  "n_hit": 8,
+  "runtime_s": 387.5
+ },
+ {
+  "file": "bin.91",
+  "full": "ta1-cadets-1-e5-official-2.bin.91.gz",
+  "records": 10000000,
+  "n_nodes": 248945,
+  "n_edges": 9446246,
+  "n_hit": 8,
+  "runtime_s": 380.6
+ },
+ {
+  "file": "bin.92",
+  "full": "ta1-cadets-1-e5-official-2.bin.92.gz",
+  "records": 10000000,
+  "n_nodes": 252609,
+  "n_edges": 9429174,
+  "n_hit": 8,
+  "runtime_s": 386.7
+ },
+ {
+  "file": "bin.93",
+  "full": "ta1-cadets-1-e5-official-2.bin.93.gz",
+  "records": 10000000,
+  "n_nodes": 252433,
+  "n_edges": 9433579,
+  "n_hit": 8,
+  "runtime_s": 382.0
+ },
+ {
+  "file": "bin.94",
+  "full": "ta1-cadets-1-e5-official-2.bin.94.gz",
+  "records": 10000000,
+  "n_nodes": 243702,
+  "n_edges": 9476121,
+  "n_hit": 8,
+  "runtime_s": 382.8
+ },
+ {
+  "file": "bin.95",
+  "full": "ta1-cadets-1-e5-official-2.bin.95.gz",
+  "records": 10000000,
+  "n_nodes": 258175,
+  "n_edges": 9426464,
+  "n_hit": 8,
+  "runtime_s": 380.9
+ },
+ {
+  "file": "bin.96",
+  "full": "ta1-cadets-1-e5-official-2.bin.96.gz",
+  "records": 10000000,
+  "n_nodes": 280193,
+  "n_edges": 9501218,
+  "n_hit": 8,
+  "runtime_s": 386.5
+ },
+ {
+  "file": "bin.97",
+  "full": "ta1-cadets-1-e5-official-2.bin.97.gz",
+  "records": 10000000,
+  "n_nodes": 318964,
+  "n_edges": 9417183,
+  "n_hit": 8,
+  "runtime_s": 390.4
+ },
+ {
+  "file": "bin.98",
+  "full": "ta1-cadets-1-e5-official-2.bin.98.gz",
+  "records": 10000000,
+  "n_nodes": 246832,
+  "n_edges": 9445064,
+  "n_hit": 8,
+  "runtime_s": 386.5
+ },
+ {
+  "file": "bin.99",
+  "full": "ta1-cadets-1-e5-official-2.bin.99.gz",
+  "records": 10000000,
+  "n_nodes": 243409,
+  "n_edges": 9428848,
+  "n_hit": 8,
+  "runtime_s": 380.7
+ },
+ {
+  "file": "bin.100",
+  "full": "ta1-cadets-1-e5-official-2.bin.100.gz",
+  "records": 10000000,
+  "n_nodes": 234365,
+  "n_edges": 9496806,
+  "n_hit": 27,
+  "runtime_s": 378.8
+ },
+ {
+  "file": "bin.101",
+  "full": "ta1-cadets-1-e5-official-2.bin.101.gz",
+  "records": 10000000,
+  "n_nodes": 245938,
+  "n_edges": 9452677,
+  "n_hit": 8,
+  "runtime_s": 389.3
+ },
+ {
+  "file": "bin.102",
+  "full": "ta1-cadets-1-e5-official-2.bin.102.gz",
+  "records": 10000000,
+  "n_nodes": 296614,
+  "n_edges": 9300890,
+  "n_hit": 8,
+  "runtime_s": 395.8
+ },
+ {
+  "file": "bin.103",
+  "full": "ta1-cadets-1-e5-official-2.bin.103.gz",
+  "records": 10000000,
+  "n_nodes": 308328,
+  "n_edges": 9283563,
+  "n_hit": 8,
+  "runtime_s": 394.9
+ },
+ {
+  "file": "bin.105",
+  "full": "ta1-cadets-1-e5-official-2.bin.105.gz",
+  "records": 10000000,
+  "n_nodes": 282674,
+  "n_edges": 9340080,
+  "n_hit": 8,
+  "runtime_s": 386.3
+ },
+ {
+  "file": "bin.106",
+  "full": "ta1-cadets-1-e5-official-2.bin.106.gz",
+  "records": 10000000,
+  "n_nodes": 257988,
+  "n_edges": 9427663,
+  "n_hit": 8,
+  "runtime_s": 386.0
+ },
+ {
+  "file": "bin.107",
+  "full": "ta1-cadets-1-e5-official-2.bin.107.gz",
+  "records": 10000000,
+  "n_nodes": 253463,
+  "n_edges": 9425444,
+  "n_hit": 8,
+  "runtime_s": 392.8
+ },
+ {
+  "file": "bin.108",
+  "full": "ta1-cadets-1-e5-official-2.bin.108.gz",
+  "records": 10000000,
+  "n_nodes": 262848,
+  "n_edges": 9407201,
+  "n_hit": 9,
+  "runtime_s": 387.0
+ },
+ {
+  "file": "bin.109",
+  "full": "ta1-cadets-1-e5-official-2.bin.109.gz",
+  "records": 10000000,
+  "n_nodes": 277640,
+  "n_edges": 9359337,
+  "n_hit": 9,
+  "runtime_s": 393.9
+ },
+ {
+  "file": "bin.111",
+  "full": "ta1-cadets-1-e5-official-2.bin.111.gz",
+  "records": 10000000,
+  "n_nodes": 297899,
+  "n_edges": 9403103,
+  "n_hit": 8,
+  "runtime_s": 387.9
+ },
+ {
+  "file": "bin.112",
+  "full": "ta1-cadets-1-e5-official-2.bin.112.gz",
+  "records": 10000000,
+  "n_nodes": 238304,
+  "n_edges": 9487023,
+  "n_hit": 8,
+  "runtime_s": 385.1
+ },
+ {
+  "file": "bin.113",
+  "full": "ta1-cadets-1-e5-official-2.bin.113.gz",
+  "records": 10000000,
+  "n_nodes": 249905,
+  "n_edges": 9438401,
+  "n_hit": 8,
+  "runtime_s": 383.5
+ },
+ {
+  "file": "bin.114",
+  "full": "ta1-cadets-1-e5-official-2.bin.114.gz",
+  "records": 10000000,
+  "n_nodes": 232436,
+  "n_edges": 9501194,
+  "n_hit": 8,
+  "runtime_s": 379.4
+ },
+ {
+  "file": "bin.115",
+  "full": "ta1-cadets-1-e5-official-2.bin.115.gz",
+  "records": 10000000,
+  "n_nodes": 221005,
+  "n_edges": 9529351,
+  "n_hit": 8,
+  "runtime_s": 391.4
+ }
+]

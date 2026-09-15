@@ -1,0 +1,9 @@
+### common-unit per-config means (e7_origunit)
+config             recall       F1   P_orig  P_alert     load  red_cov red_load
+identity+rate      0.5366   0.2584   0.0045   0.1881   2063.4   0.4868   2063.4
+TeRed+naive        0.5239   0.1861   0.0050   0.1214   1660.7   0.5761    984.3
+TeRed+RATE         0.5143   0.1974   0.0043   0.1286   1983.0   0.5723   1161.6
+TeRed+RATE*        0.5264   0.2199   0.0044   0.1500   2011.3   0.5785   1190.4
+
+### 吸收率
+  TeRed+RATE*: slots=136 kept=82 absorbed=54 (40%) boundary=0

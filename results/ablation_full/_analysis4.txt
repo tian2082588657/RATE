@@ -1,0 +1,72 @@
+==============================================================================
+1. Per-config mean node-level ROC-AUC and best-F1 (7 partitions)
+==============================================================================
+
+-- detector=cosine --
+  identity+rate        AUC=0.8474 F1=0.1241 PR=0.0228
+  tered+dual_naive     AUC=0.8581 F1=0.1694 PR=0.0332
+  tered+rate           AUC=0.8635 F1=0.1693 PR=0.0334
+  tered+rate_ratio     AUC=0.8684 F1=0.1728 PR=0.0353
+  tered+rate_single    AUC=0.8477 F1=0.0924 PR=0.0098
+  tered+none           AUC=0.6037 F1=0.0068 PR=0.0007
+
+-- detector=gnn --
+  identity+rate        AUC=0.7302 F1=0.0725 PR=0.0154
+  tered+dual_naive     AUC=0.7063 F1=0.0969 PR=0.0377
+  tered+rate           AUC=0.7191 F1=0.1034 PR=0.0394
+  tered+rate_ratio     AUC=0.7366 F1=0.1001 PR=0.0391
+  tered+rate_single    AUC=0.7777 F1=0.0857 PR=0.0335
+  tered+none           AUC=0.6541 F1=0.0896 PR=0.0315
+
+-- identity+rate_ratio (equal-width control, full budget) --
+  cosine   AUC=0.8494 F1=0.1272
+  gnn      AUC=0.6250 F1=0.0624
+
+==============================================================================
+2. Paired node ROC-AUC: identity+rate  vs  each TeRed config
+==============================================================================
+
+-- detector=cosine --
+  identity vs tered+dual_naive                   meanD=+0.0107 sd=0.0277 W/L/T=3/4/0 p=0.9375 CI=[-0.0074,+0.0329]
+  identity vs tered+rate                         meanD=+0.0162 sd=0.0302 W/L/T=4/3/0 p=0.5781 CI=[-0.0040,+0.0399]
+  identity vs tered+rate_ratio                   meanD=+0.0210 sd=0.0312 W/L/T=6/1/0 p=0.1094 CI=[+0.0001,+0.0458]
+  identity vs tered+rate_single                  meanD=+0.0003 sd=0.0268 W/L/T=2/5/0 p=0.9375 CI=[-0.0175,+0.0215]
+  identity vs tered+none                         meanD=-0.2436 sd=0.0473 W/L/T=0/7/0 p=0.0156 CI=[-0.2808,-0.2117]
+
+-- detector=gnn --
+  identity vs tered+dual_naive                   meanD=-0.0239 sd=0.0652 W/L/T=3/4/0 p=0.4688 CI=[-0.0720,+0.0242]
+  identity vs tered+rate                         meanD=-0.0111 sd=0.0649 W/L/T=3/4/0 p=0.8125 CI=[-0.0578,+0.0350]
+  identity vs tered+rate_ratio                   meanD=+0.0064 sd=0.0654 W/L/T=3/4/0 p=0.8125 CI=[-0.0400,+0.0543]
+  identity vs tered+rate_single                  meanD=+0.0475 sd=0.0658 W/L/T=5/2/0 p=0.2188 CI=[+0.0012,+0.0969]
+  identity vs tered+none                         meanD=-0.0761 sd=0.1000 W/L/T=2/5/0 p=0.1562 CI=[-0.1531,-0.0083]
+
+-- key TeRed contrasts --
+  [cosine] rate_ratio vs dual_naive              meanD=+0.0103 sd=0.0042 W/L/T=7/0/0 p=0.0156 CI=[+0.0073,+0.0134]
+  [cosine] dual_naive vs none                    meanD=+0.2544 sd=0.0377 W/L/T=7/0/0 p=0.0156 CI=[+0.2284,+0.2836]
+  [cosine] rate_ratio vs rate_single             meanD=+0.0207 sd=0.0060 W/L/T=7/0/0 p=0.0156 CI=[+0.0163,+0.0252]
+  [gnn] rate_ratio vs dual_naive                 meanD=+0.0303 sd=0.0660 W/L/T=4/2/1 p=0.5625 CI=[-0.0093,+0.0849]
+  [gnn] dual_naive vs none                       meanD=+0.0522 sd=0.0955 W/L/T=6/1/0 p=0.1562 CI=[-0.0158,+0.1170]
+  [gnn] rate_ratio vs rate_single                meanD=-0.0411 sd=0.0400 W/L/T=1/6/0 p=0.0469 CI=[-0.0717,-0.0132]
+
+==============================================================================
+3. GNN vs cosine on identical features (node ROC-AUC)
+==============================================================================
+  gnn - cosine [identity+rate]                   meanD=-0.1172 sd=0.1203 W/L/T=2/5/0 p=0.0781
+  gnn - cosine [tered+dual_naive]                meanD=-0.1518 sd=0.0504 W/L/T=0/7/0 p=0.0156
+  gnn - cosine [tered+rate]                      meanD=-0.1444 sd=0.0991 W/L/T=1/6/0 p=0.0312
+  gnn - cosine [tered+rate_ratio]                meanD=-0.1318 sd=0.0947 W/L/T=1/6/0 p=0.0312
+  gnn - cosine [tered+rate_single]               meanD=-0.0700 sd=0.1275 W/L/T=2/5/0 p=0.2188
+  gnn - cosine [tered+none]                      meanD=+0.0503 sd=0.1117 W/L/T=3/4/0 p=0.5781
+
+==============================================================================
+4. clean-train vs all-train (label-leakage check)
+==============================================================================
+  clean - all [identity+rate] n=7 max|d|=0.00e+00 identical=True
+  clean - all [tered+rate_ratio] n=7 max|d|=0.00e+00 identical=True
+  clean - all [tered+dual_naive] n=7 max|d|=0.00e+00 identical=True
+
+==============================================================================
+5. Headline numbers (mean over 7 partitions, node ROC-AUC)
+==============================================================================
+  cosine: identity+rate=0.8474  tered+dual_naive=0.8581  tered+rate=0.8635  tered+rate_ratio=0.8684  tered+rate_single=0.8477  tered+none=0.6037
+  gnn: identity+rate=0.7302  tered+dual_naive=0.7063  tered+rate=0.7191  tered+rate_ratio=0.7366  tered+rate_single=0.7777  tered+none=0.6541

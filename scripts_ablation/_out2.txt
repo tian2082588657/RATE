@@ -1,0 +1,36 @@
+### 4. key paired comparisons (n=7, exact Wilcoxon)
+  RATE* vs count : nodeF1          meanD=+0.0034 sd=0.0034 W/L/T=5/0/2 p=0.0625 boot95=[+0.0010,+0.0060] d=0.99
+  RATE* vs count : alert@5         meanD=+0.0004 sd=0.1324 W/L/T=3/3/1 p=1.0000 boot95=[-0.0941,+0.1018] d=0.00
+  RATE* vs count : alert@10        meanD=+0.0228 sd=0.0638 W/L/T=2/2/3 p=0.6250 boot95=[-0.0209,+0.0722] d=0.36
+  RATE* vs scalar: nodeF1          meanD=+0.0804 sd=0.0461 W/L/T=7/0/0 p=0.0156 boot95=[+0.0452,+0.1126] d=1.74
+  RATE* vs none  : nodeF1          meanD=+0.1660 sd=0.0705 W/L/T=7/0/0 p=0.0156 boot95=[+0.1075,+0.2072] d=2.35
+
+### 4b. per-file nodeF1
+       bin.116      bin.117      bin.118  bin.119@500      bin.120  bin.6@40000  bin.7@40000
+  RATE*         0.1818       0.2222       0.2037       0.2353       0.2069       0.0059       0.1538
+  count         0.1739       0.2133       0.2018       0.2353       0.2034       0.0046       0.1538
+  scalar        0.0800       0.0947       0.1183       0.1538       0.0702       0.0051       0.1250
+  none          0.0034       0.0051       0.0060       0.0152       0.0040       0.0016       0.0122
+  delta        +0.0079      +0.0089      +0.0019      +0.0000      +0.0035      +0.0013      +0.0000
+
+### 3. A4 v4-drop
+  TeRed+RATE*    base                nodeF1=0.1728 @5=0.4830 @10=0.4433
+  TeRed+RATE*    v4_drop_log_deg      nodeF1=0.1585 @5=0.4365 @10=0.3933 cov=0.6722 load=1925
+  TeRed+RATE*    v4_drop_out_in_ratio nodeF1=0.1564 @5=0.5440 @10=0.3799 cov=0.6133 load=1818
+  TeRed+RATE*    v4_drop_self_loop    nodeF1=0.1976 @5=0.5297 @10=0.4706 cov=0.7238 load=1796
+  TeRed+naive    base                nodeF1=0.1694 @5=0.4826 @10=0.4205
+  TeRed+naive    v4_drop_log_deg      nodeF1=0.0834 @5=0.4257 @10=0.3064 cov=0.5526 load=2003
+  TeRed+naive    v4_drop_out_in_ratio nodeF1=0.0826 @5=0.4736 @10=0.3928 cov=0.6155 load=1481
+  TeRed+naive    v4_drop_self_loop    nodeF1=0.1977 @5=0.5670 @10=0.4522 cov=0.6907 load=1725
+
+### 4c. Bonferroni on the 4 directional-split comparisons
+  k=1: p_adj=0.0156
+  k=2: p_adj=0.0312
+  k=4: p_adj=0.0625
+  k=6: p_adj=0.0938
+
+### 5. positives-per-alert / cluster purity (reduced unit)
+  identity+rate  alerts=18.3 covered_gt=8.6 gt_per_alert=0.49 alerted_nodes=2063 node_prec=0.0045 P_alert=0.1881
+  TeRed+naive    alerts=20.0 covered_gt=12.7 gt_per_alert=0.64 alerted_nodes=984 node_prec=0.0132 P_alert=0.1214
+  TeRed+RATE     alerts=20.0 covered_gt=12.3 gt_per_alert=0.61 alerted_nodes=1162 node_prec=0.0112 P_alert=0.1286
+  TeRed+RATE*    alerts=20.0 covered_gt=12.7 gt_per_alert=0.64 alerted_nodes=1190 node_prec=0.0115 P_alert=0.1500

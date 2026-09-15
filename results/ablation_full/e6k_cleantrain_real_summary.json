@@ -1,0 +1,97 @@
+{
+  "gt_counts": {
+    "bin.1:identity": 6,
+    "bin.1:tered": 1,
+    "bin.2:identity": 7,
+    "bin.2:tered": 2,
+    "bin.3:identity": 6,
+    "bin.3:tered": 1,
+    "bin.4:identity": 6,
+    "bin.4:tered": 2,
+    "bin.5:identity": 5,
+    "bin.5:tered": 2
+  },
+  "configs": {
+    "identity+rate": {
+      "n_train_gt_removed": 30,
+      "node_ROC_AUC": {
+        "all_mean": 0.8679,
+        "clean_mean": 0.8679,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "node_best_F1": {
+        "all_mean": 0.1236,
+        "clean_mean": 0.1236,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@5": {
+        "all_mean": 0.4582,
+        "clean_mean": 0.4582,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@10": {
+        "all_mean": 0.3965,
+        "clean_mean": 0.3965,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      }
+    },
+    "TeRed+count": {
+      "n_train_gt_removed": 8,
+      "node_ROC_AUC": {
+        "all_mean": 0.8731,
+        "clean_mean": 0.8731,
+        "mean_delta_all_minus_clean": -0.0,
+        "max_abs_delta": 0.0001
+      },
+      "node_best_F1": {
+        "all_mean": 0.1681,
+        "clean_mean": 0.1681,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@5": {
+        "all_mean": 0.5082,
+        "clean_mean": 0.5082,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@10": {
+        "all_mean": 0.4352,
+        "clean_mean": 0.4352,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      }
+    },
+    "TeRed+RATE*": {
+      "n_train_gt_removed": 8,
+      "node_ROC_AUC": {
+        "all_mean": 0.8811,
+        "clean_mean": 0.8811,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0001
+      },
+      "node_best_F1": {
+        "all_mean": 0.1727,
+        "clean_mean": 0.1727,
+        "mean_delta_all_minus_clean": -0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@5": {
+        "all_mean": 0.5251,
+        "clean_mean": 0.5251,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      },
+      "F1_alert@10": {
+        "all_mean": 0.4851,
+        "clean_mean": 0.4851,
+        "mean_delta_all_minus_clean": 0.0,
+        "max_abs_delta": 0.0
+      }
+    }
+  }
+}

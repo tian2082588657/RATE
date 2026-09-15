@@ -1,0 +1,60 @@
+[abl] 模板 stem: b36c705fde93a797
+[abl] 训练产物: id 5, tered 5 (tr400000)
+
+[abl] ===== bin.116 (atfull): id 287061 / tered 275848 节点 =====
+  [identity+rate] 累计 31s
+  [TeRed+naive] 累计 25s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.174 cov=0.37 best=0.465@b8 (34.2s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.080 cov=0.33 best=0.404@b5 (36.2s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.003 cov=0.00 best=0.000@b0 (29.7s)
+  [TeRed+RATE] 累计 134s
+
+[abl] ===== bin.117 (atfull): id 267500 / tered 257690 节点 =====
+  [identity+rate] 累计 33s
+  [TeRed+naive] 累计 30s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.213 cov=0.54 best=0.654@b3 (42.4s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.095 cov=0.57 best=0.654@b3 (42.0s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.005 cov=0.00 best=0.000@b0 (36.2s)
+  [TeRed+RATE] 累计 159s
+
+[abl] ===== bin.118 (atfull): id 265865 / tered 256447 节点 =====
+  [identity+rate] 累计 32s
+  [TeRed+naive] 累计 27s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.202 cov=0.62 best=0.667@b1 (37.7s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.118 cov=0.65 best=0.667@b3 (37.7s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.006 cov=0.03 best=0.057@b1 (32.7s)
+  [TeRed+RATE] 累计 144s
+
+[abl] ===== bin.119@500000 (at500000): id 18635 / tered 17252 节点 =====
+  [identity+rate] 累计 6s
+  [TeRed+naive] 累计 5s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.235 cov=0.87 best=0.929@b1 (5.1s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.154 cov=0.87 best=0.889@b1 (5.2s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.015 cov=0.00 best=0.000@b0 (4.4s)
+  [TeRed+RATE] 累计 20s
+
+[abl] ===== bin.120 (atfull): id 295765 / tered 285794 节点 =====
+  [identity+rate] 累计 32s
+  [TeRed+naive] 累计 25s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.203 cov=0.54 best=0.556@b3 (34.7s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.070 cov=0.46 best=0.471@b1 (35.0s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.004 cov=0.00 best=0.000@b0 (30.0s)
+  [TeRed+RATE] 累计 133s
+
+[abl] ===== bin.6@400000 (at400000): id 24507 / tered 22350 节点 =====
+  [identity+rate] 累计 6s
+  [TeRed+naive] 累计 5s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.005 cov=0.78 best=0.875@b2 (4.8s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.005 cov=0.78 best=0.875@b2 (4.8s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.002 cov=0.00 best=0.000@b0 (4.1s)
+  [TeRed+RATE] 累计 19s
+
+[abl] ===== bin.7@400000 (at400000): id 17797 / tered 16295 节点 =====
+  [identity+rate] 累计 6s
+  [TeRed+naive] 累计 5s
+  [TeRed+RATE][A5:enc_dual_naive] nodeF1=0.154 cov=0.73 best=0.842@b3 (4.9s)
+  [TeRed+RATE][A5:enc_rate_single] nodeF1=0.125 cov=0.73 best=0.842@b3 (4.9s)
+  [TeRed+RATE][A5:enc_none] nodeF1=0.012 cov=0.00 best=0.000@b0 (4.2s)
+  [TeRed+RATE] 累计 20s
+
+[abl] 完成 (1004s), 结果追加至 results/e6d_ablation_a5.csv

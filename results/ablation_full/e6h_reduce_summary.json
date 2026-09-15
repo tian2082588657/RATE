@@ -1,0 +1,18 @@
+{
+  "spec": "bin.119@500000",
+  "n_nodes": 18635,
+  "n_edges": 476913,
+  "n_templates": 173,
+  "parse_s": 19.47,
+  "index_build_s": 0.41,
+  "match_total_s": 499.61,
+  "reduce_total_s": 534.44,
+  "collapse_s": 34.83,
+  "seeds_considered": 274164,
+  "match_attempts": 234411,
+  "regions": 874,
+  "nodes_out": 17254,
+  "naive_seed_work": 274164,
+  "indexed_seed_work": 274164,
+  "index_gain": 1.0
+}
