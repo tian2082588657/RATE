@@ -44,6 +44,12 @@ from scripts_ablation.graphcache import parse_cached
 
 BUDGETS = [1, 2, 3, 5, 10, 20]
 
+# E1b 语义-only 对照（问题-0916-2 P0）：encoding=none 的 X 只剩语义 one-hot，
+# 但 extend_with_v4 还会追加 log_deg / out_in_ratio / nbr_type_div / self_loop
+# 四列结构特征——其中三列是度拓扑。真正的"无拓扑"对照必须连 v4 一起跳过，
+# 否则它证明的仍是"正弦编码 > 标量度特征"，而非"拓扑信息必要"。
+V4_SKIP_ENCODINGS = {"semantic_only"}
+
 
 def alert_pipeline(score, edges, n, top_k=100, bfs_q=75, min_cluster=3,
                    max_cluster=200, max_alerts=20, wmax=1.0, sort_mode="cmax",
@@ -184,7 +190,8 @@ def main():
     ap.add_argument("--figs", default="identity,tered",
                     help="图来源: identity(未归约) / tered(归约)")
     ap.add_argument("--encs", default="none,rate_single,dual_naive,rate",
-                    help="拓扑编码列表")
+                    help="拓扑编码列表；semantic_only=仅语义one-hot、无任何"
+                         "度/结构列（E1b 无拓扑对照）")
     ap.add_argument("--cache", default="cache")
     ap.add_argument("--graph-cache", default="cache/darpa/graphcache",
                     help="规范图解析缓存目录（避免重复解 gz）")
@@ -273,20 +280,26 @@ def main():
                   flush=True)
             for enc in encs:
                 tc = time.time()
+                # semantic_only：node_feature_matrix 用 none（仅语义 one-hot），
+                # 且跳过 extend_with_v4（不加任何度/结构列）。
+                nfm_enc = "none" if enc in V4_SKIP_ENCODINGS else enc
                 vocab = make_type_vocab(gpt + [Gp_test])
                 Xs_train = []
                 for Gp in gpt:
                     X, nids_t, _ = node_feature_matrix(
-                        Gp, encoding=enc, tape_dim=a.tape_dim,
+                        Gp, encoding=nfm_enc, tape_dim=a.tape_dim,
                         tape_base=a.tape_base, semantic=a.semantic, vocab=vocab)
-                    et = _edges_index(Gp, nids_t)
-                    X, _ = extend_with_v4(X, nids_t, Gp, et, scale=a.v4_scale)
+                    if enc not in V4_SKIP_ENCODINGS:
+                        et = _edges_index(Gp, nids_t)
+                        X, _ = extend_with_v4(X, nids_t, Gp, et, scale=a.v4_scale)
                     Xs_train.append(X)
                 X, nids, _ = node_feature_matrix(
-                    Gp_test, encoding=enc, tape_dim=a.tape_dim,
+                    Gp_test, encoding=nfm_enc, tape_dim=a.tape_dim,
                     tape_base=a.tape_base, semantic=a.semantic, vocab=vocab)
                 edges = _edges_index(Gp_test, nids)
-                X, _ = extend_with_v4(X, nids, Gp_test, edges, scale=a.v4_scale)
+                if enc not in V4_SKIP_ENCODINGS:
+                    X, _ = extend_with_v4(X, nids, Gp_test, edges,
+                                          scale=a.v4_scale)
                 y = label_vector(Gp_test, nids)
                 det = BenignEnsemble().fit(Xs_train,
                                            ["tr%d" % i for i in range(len(Xs_train))])
