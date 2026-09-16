@@ -1,0 +1,27 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="fig3_matrix" id="fig3_matrix">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageWidth="1180" pageHeight="640" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cap" value="Figure/encoding matrix  —  every cell is a full train&rarr;score&rarr;alert run" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#546E7A;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="16" width="1100" height="30" as="geometry"/></mxCell>
+        <mxCell id="c0" value="no topology<br/>(none)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#0D47A1;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="300" y="70" width="201" height="46" as="geometry"/></mxCell>
+        <mxCell id="c1" value="single-channel<br/>(&Sigma;&mu;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#0D47A1;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="515" y="70" width="201" height="46" as="geometry"/></mxCell>
+        <mxCell id="c2" value="dual count<br/>(naive)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#0D47A1;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="730" y="70" width="201" height="46" as="geometry"/></mxCell>
+        <mxCell id="c3" value="dual mass<br/>(RATE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#0D47A1;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="945" y="70" width="201" height="46" as="geometry"/></mxCell>
+        <mxCell id="r0" value="Identity<br/>(no reduction)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#37474F;fontColor=#1A237E;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="40" y="130" width="240" height="100" as="geometry"/></mxCell>
+        <mxCell id="r1" value="TeRed collapse<br/>(reduced)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#37474F;fontColor=#1A237E;fontSize=12;arcSize=8;" vertex="1" parent="1"><mxGeometry x="40" y="260" width="240" height="100" as="geometry"/></mxCell>
+        <mxCell id="m00" value="0.0068 (collapsed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="300" y="130" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m01" value="?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="515" y="130" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m02" value="0.186" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="730" y="130" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m03" value="0.169 / 0.173" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="945" y="130" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m10" value="E1 control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="300" y="260" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m11" value="E1 control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="515" y="260" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m12" value="E1 control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="730" y="260" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="m13" value="0.220 (matched width)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="945" y="260" width="201" height="100" as="geometry"/></mxCell>
+        <mxCell id="note" value="Rows = graph provenance (reduced vs. not); columns = the topological channel the detector consumes.<br/>The bottom-left / top-right contrast isolates the effect of reduction from the effect of encoding." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#546E7A;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="420" width="1100" height="56" as="geometry"/></mxCell>
+        <mxCell id="eq" value="Equivalence test (common unit, slots not touched by reduction)<br/>identity+dual-mass  vs.  reduced+dual-mass:  recall, F1@20, precision  &rarr;  no detectable loss" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontColor=#1B5E20;fontSize=12;arcSize=8;align=center;" vertex="1" parent="1"><mxGeometry x="40" y="500" width="1100" height="56" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

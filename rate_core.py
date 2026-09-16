@@ -126,6 +126,9 @@ def load_graphs(path):
 
 
 def save_pickle(path, obj):
+    _d = os.path.dirname(path)
+    if _d:
+        os.makedirs(_d, exist_ok=True)
     tmp = path + ".tmp"
     with open(tmp, "wb") as f:
         pickle.dump(obj, f, protocol=4)

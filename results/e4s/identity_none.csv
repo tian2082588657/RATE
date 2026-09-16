@@ -1,0 +1,2 @@
+dataset,split,gids,operator,encoding,semantic,tape_dim,tape_base,min_support,coverage,seed,n_train,n_val,n_attack,n_templates,dim,runtime_s,TP,FP,TN,FN,Precision,Recall,F1,FPR,FNR,ROC_AUC,PR_AUC,P@10,P@50,P@100,best_F1
+streamspot,scenes,"0-9,500-509",identity,none,onehot,8,10000.0,5,1.0,0,7,3,10,0,8,17.9,75171,21214,3669,14582,0.7799035119572547,0.8375318930843537,0.8076910679173517,0.8525499336896677,0.16246810691564628,0.8748518711839567,0.6481129560574369,0.0,0.76,0.52,0.8782566576479165

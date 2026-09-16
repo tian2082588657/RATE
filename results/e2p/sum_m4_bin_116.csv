@@ -1,0 +1,3 @@
+dataset,config,fig,encoding,file,n_gt_orig,n_kept,covered_kept,recall_kept,alert_P_kept,F1_kept,n_alerts,alert_TP_kept,n_nodes_Gp,node_best_f1,node_cov,F1_alert,best_F1_alert,best_b,alert_P
+e5_cadets,identity+rate_ratio,identity,rate_ratio,bin.116,34,20,4,0.2,0.2,0.2,20,4,287061,0.1463,0.3235,0.2821,0.3395,14,0.25
+e5_cadets,tered+rate_ratio,tered,rate_ratio,bin.116,34,20,4,0.2,0.15,0.1714,20,3,275848,0.1818,0.3913,0.3051,0.5056,7,0.25

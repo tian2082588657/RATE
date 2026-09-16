@@ -1,0 +1,5 @@
+dataset,fig,encoding,file,rec_tag,n_nodes_orig,n_nodes_Gp,n_edges_Gp,n_dim,top_k,max_alerts,v4_scale,runtime_s,n_gt,n_alerts,alert_TP,alert_P,node_cov,F1_alert,best_F1_alert,best_b,node_best_f1,node_auc,F1_alert@1,F1_alert@2,F1_alert@3,F1_alert@5,F1_alert@10,F1_alert@20
+e5_cadets,tered,none,bin.119@500000,at500000,18635,17252,387473,13,100,20,raw,5.3,15,0,0,0.0,0.0,0.0,0.0,0,0.0152,0.6768,,,,,,
+e5_cadets,tered,rate_single,bin.119@500000,at500000,18635,17252,387473,21,100,20,raw,5.6,15,20,2,0.1,0.8667,0.1793,0.8889,1,0.1538,0.8926,0.8889,0.6154,0.4706,0.5474,0.325,0.1793
+e5_cadets,tered,dual_naive,bin.119@500000,at500000,18635,17252,387473,29,100,20,raw,5.6,15,20,1,0.05,0.8667,0.0945,0.9286,1,0.2353,0.9058,0.9286,0.6341,0.4815,0.325,0.1793,0.0945
+e5_cadets,tered,rate,bin.119@500000,at500000,18635,17252,387473,29,100,20,raw,5.9,15,20,2,0.1,0.8667,0.1793,0.8462,1,0.2353,0.914,0.8462,0.5946,0.7536,0.5474,0.325,0.1793
