@@ -1,0 +1,80 @@
+%% =====================================================================
+%% RATE 系统框图（中文版）
+%% 论文：Reduction-Aware Topology Encoding: The Cost of Provenance Graph
+%%       Reduction for Topology-Aware Detection Is an Encoding Problem
+%% 约定：实线箭头 = 数据流（data flow）
+%%       虚线箭头 = 控制流 / 监督信号 / 可选关系（control & supervision）
+%% 渲染：mermaid.live、VS Code Mermaid 插件、GitHub Markdown 均可直接渲染
+%% =====================================================================
+flowchart TB
+
+    subgraph EXT["外部依赖 / External dependencies"]
+        E_DATA["DARPA TC E5 CADETS<br/>主数据集 · 主机溯源审计流"]
+        E_ALT["StreamSpot<br/>第二语料 · 图级判定"]
+        E_BASE["已发布检测器<br/>Kairos / FLASH / THREATRACE"]
+        E_ENV["计算平台<br/>GPU 服务器 + PyTorch"]
+    end
+
+    subgraph IN["输入层 / Input"]
+        I_STREAM["原始内核审计记录<br/>事件流 · 按时间分区"]
+        I_TRAIN["训练窗口<br/>前 5 个分区 · 各截断 4e5 条"]
+        I_TEST["测试分区<br/>bin.116-120 / bin.6 / bin.7"]
+        I_GT["真值标注<br/>124 个命名攻击实体（114 可解析）"]
+    end
+
+    subgraph PRE["预处理 / Preprocessing"]
+        P_CG["规范化溯源图 G=(V,E)<br/>类型化节点 + 带时间戳有向边"]
+        P_TPL["模板提取<br/>训练期高频、类型化子图"]
+        P_CACHE["图缓存 / 预计算"]
+    end
+
+    subgraph CORE["核心方法 / Core method"]
+        C_RED["归约算子 R：折叠<br/>模板匹配 → 摘要节点 s"]
+        C_GP["归约图 G'（中间表示）<br/>节点映射 π + 边质量 μ"]
+        C_ENC["RATE* 拓扑编码<br/>4 通道：count 入/出 + 折叠比 入/出<br/>TAPE 正弦投影 D=8, b=1e4"]
+        C_DESC["节点描述子<br/>类型 one-hot + 3 列结构特征 + RATE*"]
+    end
+
+    subgraph TR["训练 / 推理 / Training and inference"]
+        T_FIT["无标签单类集成<br/>5 个成员 · 每训练分区 1 个<br/>质心 + 5% 分位余弦半径"]
+        T_SCORE["节点异常分数<br/>score = 1 - max sim"]
+        T_ARMS["配置对照臂<br/>identity · TeRed+count · TeRed+RATE*<br/>+ 等宽对照（未归约 + 4 通道）"]
+        T_GNN["消息传递检测器（对照）<br/>同图、同正例"]
+    end
+
+    subgraph OUT["输出 / 评估 / Output and evaluation"]
+        O_AGG["预算化告警聚合<br/>top-100 种子 + BFS P75<br/>簇 3-200 · 预算 β"]
+        O_ALERT["告警簇<br/>连通子图"]
+        O_BACK["原单位映射（中间表示）<br/>经 π 回映到原始实体"]
+        O_MET["评估指标<br/>node best-F1 · alert F1@β · 共单位召回"]
+    end
+
+    %% ---------------- 数据流（实线） ----------------
+    E_DATA --> I_STREAM
+    E_ALT --> I_STREAM
+    I_STREAM --> P_CG
+    I_TEST --> P_CG
+    P_CG --> P_CACHE
+    P_CACHE --> C_RED
+    P_TPL --> C_RED
+    C_RED --> C_GP
+    C_GP --> C_ENC
+    C_ENC --> C_DESC
+    C_DESC --> T_FIT
+    C_DESC --> T_SCORE
+    T_FIT --> T_SCORE
+    T_SCORE --> O_AGG
+    O_AGG --> O_ALERT
+    O_ALERT --> O_MET
+    O_AGG --> O_BACK
+    O_BACK --> O_MET
+
+    %% ------------- 控制流 / 监督 / 可选（虚线） -------------
+    I_TRAIN -.->|控制：模板只从训练期提取| P_TPL
+    T_ARMS -.->|配置开关| C_RED
+    T_ARMS -.->|配置开关| C_ENC
+    T_GNN -.->|消融对照| O_MET
+    I_GT -.->|监督：仅用于评估| O_MET
+    E_BASE -.->|同图同正例复现| O_MET
+    E_ALT -.->|第二语料复现| P_CG
+    E_ENV -.->|运行环境| T_FIT

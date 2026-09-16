@@ -1,0 +1,80 @@
+%% =====================================================================
+%% RATE system diagram (English)
+%% Paper: Reduction-Aware Topology Encoding: The Cost of Provenance Graph
+%%        Reduction for Topology-Aware Detection Is an Encoding Problem
+%% Legend: solid arrow  = data flow
+%%         dashed arrow = control flow / supervision / optional relation
+%% Renders directly in mermaid.live, VS Code Mermaid preview, GitHub Markdown
+%% =====================================================================
+flowchart TB
+
+    subgraph EXT["External dependencies"]
+        E_DATA["DARPA TC E5 CADETS<br/>primary corpus: host provenance audit stream"]
+        E_ALT["StreamSpot<br/>second corpus: graph-level decision"]
+        E_BASE["Published detectors<br/>Kairos / FLASH / THREATRACE"]
+        E_ENV["Compute platform<br/>GPU server + PyTorch"]
+    end
+
+    subgraph IN["Input"]
+        I_STREAM["Raw kernel audit records<br/>event stream, time-partitioned"]
+        I_TRAIN["Training windows<br/>first 5 partitions, truncated to 4e5 records"]
+        I_TEST["Test partitions<br/>bin.116-120 / bin.6 / bin.7"]
+        I_GT["Ground truth<br/>124 named attack entities (114 resolvable)"]
+    end
+
+    subgraph PRE["Preprocessing"]
+        P_CG["Canonical provenance graph G=(V,E)<br/>typed nodes + timestamped directed edges"]
+        P_TPL["Template extraction<br/>frequent typed subgraphs from the training period"]
+        P_CACHE["Graph cache / precompute"]
+    end
+
+    subgraph CORE["Core method"]
+        C_RED["Reduction operator R: collapse<br/>template match to summary node s"]
+        C_GP["Reduced graph G' (intermediate)<br/>node map pi + edge mass mu"]
+        C_ENC["RATE* topology encoding<br/>4 channels: in/out count + in/out collapse ratio<br/>TAPE sinusoidal projection D=8, b=1e4"]
+        C_DESC["Node descriptor<br/>type one-hot + 3 structural columns + RATE*"]
+    end
+
+    subgraph TR["Training / inference"]
+        T_FIT["Label-free one-class ensemble<br/>5 members, one per training partition<br/>centroid + 5th-percentile cosine radius"]
+        T_SCORE["Node anomaly score<br/>score = 1 - max sim"]
+        T_ARMS["Configuration arms<br/>identity / TeRed+count / TeRed+RATE*<br/>plus equal-width control (unreduced, 4 channels)"]
+        T_GNN["Message-passing detector (control)<br/>same graph, same positives"]
+    end
+
+    subgraph OUT["Output / evaluation"]
+        O_AGG["Budgeted alert aggregation<br/>top-100 seeds + BFS P75<br/>cluster 3-200, budget beta"]
+        O_ALERT["Alert clusters<br/>connected subgraphs"]
+        O_BACK["Original-unit mapping (intermediate)<br/>map back through pi to original entities"]
+        O_MET["Metrics<br/>node best-F1 / alert F1@beta / common-unit recall"]
+    end
+
+    %% ---------------- data flow (solid) ----------------
+    E_DATA --> I_STREAM
+    E_ALT --> I_STREAM
+    I_STREAM --> P_CG
+    I_TEST --> P_CG
+    P_CG --> P_CACHE
+    P_CACHE --> C_RED
+    P_TPL --> C_RED
+    C_RED --> C_GP
+    C_GP --> C_ENC
+    C_ENC --> C_DESC
+    C_DESC --> T_FIT
+    C_DESC --> T_SCORE
+    T_FIT --> T_SCORE
+    T_SCORE --> O_AGG
+    O_AGG --> O_ALERT
+    O_ALERT --> O_MET
+    O_AGG --> O_BACK
+    O_BACK --> O_MET
+
+    %% ------------ control / supervision / optional (dashed) ------------
+    I_TRAIN -.->|control: templates come only from the training period| P_TPL
+    T_ARMS -.->|configuration switch| C_RED
+    T_ARMS -.->|configuration switch| C_ENC
+    T_GNN -.->|ablation control| O_MET
+    I_GT -.->|supervision: evaluation only| O_MET
+    E_BASE -.->|re-run on the same graph and positives| O_MET
+    E_ALT -.->|second-corpus replication| P_CG
+    E_ENV -.->|runtime| T_FIT
