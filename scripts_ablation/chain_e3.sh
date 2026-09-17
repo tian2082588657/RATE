@@ -15,13 +15,15 @@ mkdir -p "$OUT" "$LOGS"
 
 STRENGTHS=${1:-250,1000,4000,16000}
 WARM=${2:-bin.7@400000}
-REST=${3:-bin.6@400000,bin.119@500000,bin.120}
+REST=${3:-bin.6@400000,bin.119@500000}
 
 run_one () {
   local st=$1 spec=$2
   local tag
   tag=$(echo "$spec" | tr './@' '___')
-  python -u scripts_ablation/e1_enc_matrix.py \
+  # PYTHONHASHSEED=0：reduction/tered.py 的实例匹配已改为 sorted(cand)，
+  # 这里再钉住哈希种子，双保险，保证跨进程/跨机结果完全一致。
+  PYTHONHASHSEED=0 python -u scripts_ablation/e1_enc_matrix.py \
     --test-files "$spec" --figs tered --encs none,dual_naive,rate \
     --max-total "$st" --templates "$TPL" \
     --cache "$ROOT/cache_sweep/mt$st" --graph-cache "$GCACHE" \

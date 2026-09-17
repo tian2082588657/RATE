@@ -19,6 +19,7 @@ import argparse
 import csv
 import glob
 import os
+import re
 from collections import defaultdict
 
 from PIL import Image, ImageDraw, ImageFont
@@ -76,6 +77,7 @@ def read_csvs(pattern):
     for p in sorted(glob.glob(pattern)):
         with open(p, encoding="utf-8", newline="") as fh:
             for r in csv.DictReader(fh):
+                r["_src"] = os.path.basename(p)
                 rows.append(r)
     return rows
 
@@ -258,47 +260,52 @@ def panel_a(d, box, e1):
            box[0] + 18, box[1] - 8)
 
 
+def _max_total(r):
+    """实验强度（预算）。优先用 max_total 列，否则从文件名 mt<N> 解析。"""
+    v = fnum(r, "max_total")
+    if v is not None:
+        return int(round(v))
+    m = re.search(r'mt(\d+)', r.get("_src", ""))
+    return int(m.group(1)) if m else None
+
+
 def panel_b(d, box, e3):
-    """归约强度扫描：边归约率 → 节点级 best-F1。"""
+    """归约强度扫描：max_total 预算 → 节点级 best-F1。"""
     p = Panel(d, box, "(b) Detection under increasing reduction, node best-F1",
-              "edge reduction ratio", "")
+              "max_total (template instance budget)", "")
     if not e3:
-        p.set_x(0, 1, [0, 0.5, 1.0])
+        p.set_x(0, 17000, [0, 4000, 8000, 12000, 16000])
         p.set_y(0, 1, [0, 0.5, 1.0])
         p.draw_frame()
         d.text(((box[0] + box[2]) / 2, (box[1] + box[3]) / 2),
                "E3 pending", font=F_TITLE, fill=(180, 80, 80), anchor="mm")
         return
-    # 每个 (strength, encoding) → edge_cut / node_best_f1
     per = defaultdict(list)
     for r in e3:
-        gp, og = fnum(r, "n_edges_Gp"), fnum(r, "n_edges_orig")
-        cut = fnum(r, "edge_cut")
-        if cut is None and gp is not None and og:
-            cut = 1.0 - gp / og
-        if cut is None:
+        st = _max_total(r)
+        if st is None:
             continue
-        per[(round(cut, 4), r.get("encoding"))].append(fnum(r, "node_best_f1"))
+        per[(st, r.get("encoding"))].append(fnum(r, "node_best_f1"))
 
     series = {}
     for enc in ENC_ORDER:
-        pts = sorted((c, mean(v)) for (c, e), v in per.items() if e == enc)
-        pts = [(c, v) for c, v in pts if v is not None]
+        pts = sorted((st, mean(v)) for (st, e), v in per.items() if e == enc)
+        pts = [(st, v) for st, v in pts if v is not None]
         if pts:
             series[enc] = pts
 
     allv = [v for pts in series.values() for _, v in pts]
     ymax = max(allv + [0.01]) * 1.28
-    allx = [c for pts in series.values() for c, _ in pts]
-    xmax = max(allx) if allx else 1.0
-    p.set_x(-0.02, max(xmax * 1.12, 0.05),
-            [0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
+    allx = [st for pts in series.values() for st, _ in pts]
+    xmax = max(allx) if allx else 1
+    p.set_x(0, max(xmax * 1.12, 100),
+            [250, 1000, 4000, 16000])
     p.set_y(0.0, ymax, [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30][
         : max(2, int(ymax / 0.05) + 1)])
-    p.draw_frame()
+    p.draw_frame(xticklabels=["", "1k", "4k", "16k"])
 
     for enc, pts in series.items():
-        pix = [(p.px(c), p.py(v)) for c, v in pts]
+        pix = [(p.px(st), p.py(v)) for st, v in pts]
         p.line(pix, ENC_COLOR[enc], MARKER[enc])
     legend(d, [(ENC_LABEL[e], ENC_COLOR[e], "line")
                for e in ENC_ORDER if e in series],

@@ -55,3 +55,6 @@ results/v3b_control/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# 临时结果工作目录（E1/E2/E3/E4s 汇总，可重建）
+results/work/

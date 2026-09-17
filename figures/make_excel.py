@@ -13,7 +13,7 @@
 每个 sheet 先落原始聚合表，再放原生图表对象。
 """
 from __future__ import annotations
-import os, sys, csv, glob, argparse
+import os, sys, re, csv, glob, argparse
 from collections import defaultdict
 
 try:
@@ -121,28 +121,38 @@ def _edge_cut(r):
     return 1.0 - gp / orig
 
 
+def _max_total(r):
+    """实验强度（预算）。优先用 max_total 列，否则从文件名 mt<N> 解析。"""
+    v = fnum(r, "max_total")
+    if v is not None:
+        return int(round(v))
+    m = re.search(r'mt(\d+)', r.get("_src", ""))
+    return int(m.group(1)) if m else None
+
+
 def sheet_e3(wb, rows):
-    """主图：横轴边归约率（归约强度），纵轴节点级检测质量。"""
+    """主图：横轴为 max_total 归约预算，纵轴节点级检测质量。"""
     if not rows:
         return
     encs = sorted({r.get("encoding", "?") for r in rows})
-    cuts = sorted({_edge_cut(r) for r in rows if _edge_cut(r) is not None})
+    strengths = sorted({st for st in (_max_total(r) for r in rows) if st is not None})
     ws = wb.create_sheet("E3_strength_sweep")
-    header = ["edge_cut (mean)"] + encs + ["nodes_kept (mean)"]
+    header = ["max_total"] + encs + ["nodes_kept"] + ["edge_cut"]
     table = []
-    for cut in cuts:
-        band = [r for r in rows if _edge_cut(r) is not None
-                and abs(_edge_cut(r) - cut) < 1e-4]
-        nk = mean([(fnum(r, "n_nodes_Gp") / fnum(r, "n_nodes_orig"))
+    for st in strengths:
+        band = [r for r in rows if _max_total(r) == st]
+        nk = mean([fnum(r, "n_nodes_Gp") / fnum(r, "n_nodes_orig")
                    if fnum(r, "n_nodes_orig") else None for r in band])
-        line = [cut] + [mean([fnum(r, "node_best_f1") for r in band
+        ec = mean([_edge_cut(r) for r in band])
+        line = [st] + [mean([fnum(r, "node_best_f1") for r in band
                               if r.get("encoding") == en]) for en in encs]
         line.append(nk)
+        line.append(ec)
         table.append([v if v is not None else "" for v in line])
     write_table(ws, header, table)
     ch = LineChart()
-    ch.title = "Detection quality vs reduction strength"
-    ch.x_axis.title = "edge reduction ratio"
+    ch.title = "Detection quality vs reduction budget"
+    ch.x_axis.title = "max_total (template instance budget)"
     ch.y_axis.title = "node best-F1"
     data = Reference(ws, min_col=2, max_col=1 + len(encs), min_row=1,
                      max_row=1 + len(table))

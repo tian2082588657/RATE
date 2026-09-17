@@ -112,7 +112,9 @@ def _seeded_match(idx: _MatchIndex, Tnx, root_t, seed_g, max_backtracks=4000):
         if cand is None:
             return False
         typ = Tnx.nodes[t].get("type", "unknown")
-        for g in cand:
+        # 必须 sorted：cand 是 set，字符串哈希随机化后迭代顺序随进程变化，
+        # DFS 会返回不同的合法嵌入 -> 归约结果不可复现（E3 扫描非单调的根因）。
+        for g in sorted(cand):
             if g in used:
                 continue
             if Gnx.nodes[g].get("type", "unknown") != typ:

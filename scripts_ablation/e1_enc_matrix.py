@@ -314,6 +314,7 @@ def main():
                            n_edges_orig=g.n_edges(),
                            n_nodes_Gp=Gp_test.n_nodes(), n_edges_Gp=len(edges),
                            n_dim=X.shape[1], top_k=a.top_k,
+                           max_total=a.max_total,
                            max_alerts=a.max_alerts, v4_scale=a.v4_scale,
                            runtime_s=round(time.time() - tc, 1))
                 row.update(m)
