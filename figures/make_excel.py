@@ -203,7 +203,10 @@ def main():
     e2 = read_csvs(os.path.join(d, "e2", "sum_*.csv")) or read_csvs(os.path.join(d, "e2_*.csv"))
     e3 = (read_csvs(os.path.join(d, "e3", "*.csv"))
           or read_csvs(os.path.join(d, "e3_*.csv")))
-    e3 += read_csvs(os.path.join(d, "e3full", "*.csv"))
+    # 全尺寸扫描结果在仓库根 results/e3full（d 通常是 results/work）
+    e3 += (read_csvs(os.path.join(d, "e3full", "*.csv"))
+           or read_csvs(os.path.join(os.path.dirname(os.path.abspath(d)),
+                                      "e3full", "*.csv")))
     ss = read_csvs(os.path.join(d, "e4s", "*.csv")) or read_csvs(os.path.join(d, "e4s_*.csv"))
 
     sheet_e1(wb, e1, "fig", "E1_encoding_matrix", "node_best_f1")
