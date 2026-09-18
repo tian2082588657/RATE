@@ -35,6 +35,9 @@ def read_csvs(pattern):
         try:
             with open(p, "r", encoding="utf-8", newline="") as fh:
                 for r in csv.DictReader(fh):
+                    ds = str(r.get("dataset", ""))
+                    if not ds or ds == "dataset":
+                        continue          # 跳过拼接文件里的重复表头
                     r["_src"] = os.path.basename(p)
                     rows.append(r)
         except Exception as e:
@@ -193,9 +196,14 @@ def main():
     wb = Workbook()
     wb.remove(wb.active)
 
-    e1 = read_csvs(os.path.join(d, "e1", "*.csv")) or read_csvs(os.path.join(d, "e1_*.csv"))
+    e1 = (read_csvs(os.path.join(d, "e1", "*.csv"))
+          or read_csvs(os.path.join(d, "e1_*.csv")))
+    e1 += read_csvs(os.path.join(d, "e1b", "*.csv")) or \
+        read_csvs(os.path.join(d, "e1b_*.csv"))
     e2 = read_csvs(os.path.join(d, "e2", "sum_*.csv")) or read_csvs(os.path.join(d, "e2_*.csv"))
-    e3 = read_csvs(os.path.join(d, "e3", "*.csv")) or read_csvs(os.path.join(d, "e3_*.csv"))
+    e3 = (read_csvs(os.path.join(d, "e3", "*.csv"))
+          or read_csvs(os.path.join(d, "e3_*.csv")))
+    e3 += read_csvs(os.path.join(d, "e3full", "*.csv"))
     ss = read_csvs(os.path.join(d, "e4s", "*.csv")) or read_csvs(os.path.join(d, "e4s_*.csv"))
 
     sheet_e1(wb, e1, "fig", "E1_encoding_matrix", "node_best_f1")

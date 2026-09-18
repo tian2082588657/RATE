@@ -3,15 +3,17 @@
 
 产出:
   figures/fig2_encoding_strength.png
-    面板 (a): 编码谱系（未归约 / 归约 × 四种编码）节点级 best-F1
-    面板 (b): 归约强度扫描（边归约率 → 节点级 best-F1），四种编码
+    面板 (a): 编码谱系（未归约 / 归约 x 五种编码）节点级 best-F1，7 分区均值
+    面板 (b): 归约强度扫描（真实边归约率 -> 节点级 best-F1），逐分区曲线
 
 数据来源:
-  E1: results/e1p/all_e1.csv
-  E3: results/work/e3/*.csv  （可选；缺失时只画面板 (a)）
+  E1 : results/e1p/all_e1.csv                （none / rate_single / dual_naive / rate）
+  E1b: results/e1b_semantic_only_all.csv     （semantic_only 对照）
+  E3 : results/work/e3/*.csv                 （小窗口强度扫描）
+       results/e3full/*.csv                  （全尺寸分区强度扫描）
 
 用法:
-  python figures/make_fig_png.py [--e1 PATH] [--e3dir DIR] [--out PATH]
+  python figures/make_fig_png.py [--e3dirs "results/work/e3,results/e3full"] [--out PATH]
 """
 from __future__ import annotations
 
@@ -31,22 +33,39 @@ FG = (26, 26, 26)
 GRID = (214, 219, 227)
 AXIS = (60, 66, 76)
 
-ENC_ORDER = ["none", "rate_single", "dual_naive", "rate"]
-ENC_LABEL = {
-    "none": "no topology",
-    "rate_single": "Σμ (mass scalar)",
-    "dual_naive": "count (dual)",
-    "rate": "RATE (dual, μ-weighted)",
+# 面板 (a)：完整编码谱系（由弱到强）
+ENC_ORDER = ["semantic_only", "none", "rate_single", "dual_naive", "rate"]
+ENC_SHORT = {
+    "semantic_only": "no degree",
+    "none": "scalar deg.",
+    "rate_single": "\u03a3\u03bc",
+    "dual_naive": "count",
+    "rate": "RATE",
 }
-# 色盲友好 + 灰度可辨；未归约=浅蓝实体，归约=深红带斜纹
+ENC_LABEL = {
+    "semantic_only": "semantic only (no degree)",
+    "none": "scalar-degree-only",
+    "rate_single": "\u03a3\u03bc (mass scalar)",
+    "dual_naive": "count (dual)",
+    "rate": "RATE (dual)",
+}
+# 色盲友好 + 灰度可辨
 ENC_COLOR = {
+    "semantic_only": (120, 128, 142),
     "none": (150, 158, 170),
     "rate_single": (108, 172, 228),
     "dual_naive": (240, 160, 60),
     "rate": (196, 62, 74),
 }
 FIG_COLOR = {"identity": (108, 172, 228), "tered": (169, 49, 65)}
-MARKER = {"none": "o", "rate_single": "s", "dual_naive": "^", "rate": "D"}
+MARKER = {"semantic_only": "o", "none": "s", "rate_single": "s",
+          "dual_naive": "^", "rate": "D"}
+
+# 面板 (b)：只画两条族（全编码 / 无度列编码），每条族内逐分区一条线
+ENC_B = ["none", "rate"]
+ENC_B_LABEL = {"none": "no-degree encoder", "rate": "full encoder (RATE)"}
+
+PROD_CUT = 15.0          # 生产设置（7 分区聚合）的边归约率，仅作参考线
 
 
 def _font(size, bold=False):
@@ -70,15 +89,26 @@ F_LABEL = _font(25)
 F_TITLE = _font(28, bold=True)
 F_LEG = _font(21)
 F_ANNO = _font(21)
+F_NOTE = _font(19)
 
 
-def read_csvs(pattern):
+def read_csvs(patterns):
+    """patterns: 逗号分隔的 glob 列表；只保留 dataset 以 e5 开头的行。"""
     rows = []
-    for p in sorted(glob.glob(pattern)):
-        with open(p, encoding="utf-8", newline="") as fh:
-            for r in csv.DictReader(fh):
-                r["_src"] = os.path.basename(p)
-                rows.append(r)
+    for pat in patterns.split(","):
+        pat = pat.strip()
+        if not pat:
+            continue
+        if os.path.isdir(pat):
+            pat = os.path.join(pat, "*.csv")
+        for p in sorted(glob.glob(pat)):
+            with open(p, encoding="utf-8", newline="") as fh:
+                for r in csv.DictReader(fh):
+                    ds = str(r.get("dataset", ""))
+                    if not ds or ds == "dataset":
+                        continue          # 跳过拼接文件里的重复表头
+                    r["_src"] = os.path.basename(p)
+                    rows.append(r)
     return rows
 
 
@@ -93,6 +123,15 @@ def fnum(r, k):
 def mean(xs):
     xs = [x for x in xs if x is not None]
     return sum(xs) / len(xs) if xs else None
+
+
+def _edge_cut(r):
+    """边归约率 = 1 - n_edges_Gp / n_edges_orig。"""
+    gp, orig = fnum(r, "n_edges_Gp"), fnum(r, "n_edges_orig")
+    if gp is None or not orig:
+        ec = fnum(r, "edge_cut")
+        return ec
+    return 1.0 - gp / orig
 
 
 class Panel:
@@ -110,7 +149,6 @@ class Panel:
         self.yticks = []
 
     def _text_size(self, text, font):
-        # 返回 (width, height)
         if hasattr(font, "getbbox"):
             l, t, r, b = font.getbbox(text)
             return (r - l, b - t)
@@ -134,17 +172,14 @@ class Panel:
 
     def draw_frame(self, xticklabels=None, yticklabels=None, yfmt="%.2f"):
         d = self.d
-        # 网格
         for t in self.yticks:
             y = self.py(t)
             d.line([(self.x0, y), (self.x1, y)], fill=GRID, width=1)
         for t in self.xticks:
             x = self.px(t)
             d.line([(x, self.y0), (x, self.y1)], fill=GRID, width=1)
-        # 轴
         d.line([(self.x0, self.y0), (self.x0, self.y1)], fill=AXIS, width=2)
         d.line([(self.x0, self.y1), (self.x1, self.y1)], fill=AXIS, width=2)
-        # 刻度文字
         for i, t in enumerate(self.yticks):
             lab = yticklabels[i] if yticklabels else (yfmt % t)
             d.text((self.x0 - 12, self.py(t)), lab, font=F_TICK, fill=FG,
@@ -157,11 +192,9 @@ class Panel:
             for t in self.xticks:
                 d.text((self.px(t), self.y1 + 12), ("%.2f" % t), font=F_TICK,
                        fill=FG, anchor="ma")
-        # 轴标题
         d.text(((self.x0 + self.x1) / 2, self.y1 + 58), self.xlabel,
                font=F_LABEL, fill=FG, anchor="ma")
         if self.ylabel:
-            # PIL anchor 在某些字体下失效，改用 bbox 手动定位
             lw, lh = self._text_size(self.ylabel, F_LABEL)
             d.text((self.x0 - 18 - lw, self.y0 - 10 - lh),
                    self.ylabel, font=F_LABEL, fill=FG)
@@ -176,20 +209,18 @@ class Panel:
         d.rectangle([x_l, y_v, x_r, y_0], fill=color, outline=(40, 44, 52),
                     width=1)
         if hatch:
-            # 白斜纹（稀疏），灰度打印仍可区分
-            step = max(14, int((y_0 - y_v) / 8))
+            step = 9                      # 细密斜纹，灰度打印仍可辨
             for k in range(-int((y_0 - y_v) / step) - 2,
                            int((x_r - x_l) / step) + 2):
                 x1 = x_l + k * step
                 y1 = y_v
                 x2 = x1 + (y_0 - y_v)
                 y2 = y_0
-                # 裁剪到矩形
                 x1c, y1c = max(x1, x_l), max(y1, y_v)
                 x2c, y2c = min(x2, x_r), min(y2, y_0)
                 if x1c < x2c and y1c < y2c:
                     d.line([(x1c, y1c), (x2c, y2c)], fill=(255, 255, 255),
-                           width=2)
+                           width=1)
 
     def line(self, pts, color, marker="o", msize=7, lw=3):
         d = self.d
@@ -225,8 +256,8 @@ def legend(d, items, x, y, dy=34):
 
 
 def panel_a(d, box, e1):
-    """编码谱系：未归约 / 归约 × 四种编码 的节点级 best-F1（均值）。"""
-    p = Panel(d, box, "(a) Encoding spectrum, node best-F1",
+    """编码谱系：未归约 / 归约 x 五种编码 的节点级 best-F1（7 分区均值）。"""
+    p = Panel(d, box, "(a) Encoding spectrum, node best-$F_1$",
               "topology encoding", "")
     vals = {}
     for fig in ("identity", "tered"):
@@ -237,90 +268,97 @@ def panel_a(d, box, e1):
     ymax = 0.20
     p.set_x(-0.5, len(ENC_ORDER) - 0.5, list(range(len(ENC_ORDER))))
     p.set_y(0.0, ymax, [0.0, 0.05, 0.10, 0.15, 0.20])
-    p.draw_frame(xticklabels=["no topo.", "Σμ", "count", "RATE"])
+    p.draw_frame(xticklabels=[ENC_SHORT[e] for e in ENC_ORDER])
 
     nfig = 2
-    total = 0.56            # 每组占用宽度
+    total = 0.56
     half = total / (2 * nfig) - 0.010
     gap = 0.065
     offs = {"identity": -gap, "tered": gap}
-    # 只标注归约柱，避免未归约 count/RATE 重叠
     for gi, enc in enumerate(ENC_ORDER):
+        pair = {fig: vals.get((fig, enc)) for fig in ("identity", "tered")}
+        top = max([v for v in pair.values() if v is not None] or [0.0])
         for fig in ("identity", "tered"):
-            v = vals.get((fig, enc))
+            v = pair[fig]
             if v is None:
                 continue
             p.bar(gi + offs[fig], v, half, FIG_COLOR[fig],
                   hatch=(fig == "tered"))
-            if fig == "tered":
-                d.text((p.px(gi + offs[fig]), p.py(v) - 14), "%.3f" % v,
-                       font=F_ANNO, fill=FG, anchor="mb")
+        # 两条臂的数值叠放在较高柱上方（左=未归约，右=归约）
+        ytxt = p.py(top) - 12
+        for fig in ("tered", "identity"):
+            v = pair[fig]
+            if v is None:
+                continue
+            d.text((p.px(gi), ytxt), "%.3f" % v, font=F_ANNO,
+                   fill=FIG_COLOR[fig], anchor="mb")
+            ytxt -= 24
     legend(d, [("unreduced graph", FIG_COLOR["identity"], "bar"),
                ("reduced graph", FIG_COLOR["tered"], "bar")],
            box[0] + 18, box[1] - 8)
 
 
-def _max_total(r):
-    """实验强度（预算）。优先用 max_total 列，否则从文件名 mt<N> 解析。"""
-    v = fnum(r, "max_total")
-    if v is not None:
-        return int(round(v))
-    m = re.search(r'mt(\d+)', r.get("_src", ""))
-    return int(m.group(1)) if m else None
-
-
 def panel_b(d, box, e3):
-    """归约强度扫描：max_total 预算 → 节点级 best-F1。"""
-    p = Panel(d, box, "(b) Detection under increasing reduction, node best-F1",
-              "max_total (template instance budget)", "")
-    if not e3:
-        p.set_x(0, 17000, [0, 4000, 8000, 12000, 16000])
+    """归约强度扫描：真实边归约率 -> 节点级 best-F1，逐分区。
+    只画归约图上的点：未归约图是另一个正集（reduced-unit 不可比），
+    不能把 x=0 的 identity 行接进同一曲线。"""
+    p = Panel(d, box, "(b) Detection under increasing reduction",
+              "edge-reduction ratio (%)", "node best-$F_1$")
+    per = defaultdict(list)                       # (partition, enc) -> [(cut%, f1)]
+    for r in e3:
+        enc, part = r.get("encoding"), r.get("file")
+        cut, f1 = _edge_cut(r), fnum(r, "node_best_f1")
+        if enc is None or cut is None or f1 is None:
+            continue
+        per[(part, enc)].append((cut * 100.0, f1))
+    if not per:
+        p.set_x(0, 50, [0, 10, 20, 30, 40, 50])
         p.set_y(0, 1, [0, 0.5, 1.0])
         p.draw_frame()
         d.text(((box[0] + box[2]) / 2, (box[1] + box[3]) / 2),
                "E3 pending", font=F_TITLE, fill=(180, 80, 80), anchor="mm")
         return
-    per = defaultdict(list)
-    for r in e3:
-        st = _max_total(r)
-        if st is None:
-            continue
-        per[(st, r.get("encoding"))].append(fnum(r, "node_best_f1"))
 
-    series = {}
-    for enc in ENC_ORDER:
-        pts = sorted((st, mean(v)) for (st, e), v in per.items() if e == enc)
-        pts = [(st, v) for st, v in pts if v is not None]
-        if pts:
-            series[enc] = pts
+    xmax = 50.0
+    allv = [v for (part, e), pts in per.items() if e in ENC_B
+            for _, v in pts]
+    ymax = max(allv + [0.01]) * 1.35
+    p.set_x(0.0, xmax, [0, 10, 20, 30, 40, 50])
+    step = 0.05
+    ntick = max(2, int(ymax / step) + 1)
+    p.set_y(0.0, ymax, [round(i * step, 2) for i in range(ntick)])
+    p.draw_frame(xticklabels=["0", "10", "20", "30", "40", "50"])
 
-    allv = [v for pts in series.values() for _, v in pts]
-    ymax = max(allv + [0.01]) * 1.28
-    allx = [st for pts in series.values() for st, _ in pts]
-    xmax = max(allx) if allx else 1
-    p.set_x(0, max(xmax * 1.12, 100),
-            [250, 1000, 4000, 16000])
-    p.set_y(0.0, ymax, [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30][
-        : max(2, int(ymax / 0.05) + 1)])
-    p.draw_frame(xticklabels=["", "1k", "4k", "16k"])
+    # 参考线：生产设置的归约率（标签放在线右侧中部，避开顶部图例）
+    xp = p.px(PROD_CUT)
+    d.line([(xp, p.y0), (xp, p.y1)], fill=(190, 120, 120), width=2)
+    d.text((xp + 6, p.py(ymax * 0.52)), "production setting, 15%",
+           font=F_NOTE, fill=(150, 80, 80))
 
-    for enc, pts in series.items():
-        pix = [(p.px(st), p.py(v)) for st, v in pts]
-        p.line(pix, ENC_COLOR[enc], MARKER[enc])
-    legend(d, [(ENC_LABEL[e], ENC_COLOR[e], "line")
-               for e in ENC_ORDER if e in series],
-           box[2] - 330, box[1] + 26)
+    # 逐分区曲线：先画无度列族，再画全编码族（后者更重要，压在上层）
+    for enc in ENC_B:
+        for (part, e), pts in sorted(per.items()):
+            if e != enc:
+                continue
+            pts = sorted(pts)
+            pix = [(p.px(x), p.py(y)) for x, y in pts]
+            p.line(pix, ENC_COLOR[enc], MARKER[enc],
+                   msize=6 if enc == "rate" else 5,
+                   lw=3 if enc == "rate" else 2)
+    legend(d, [(ENC_B_LABEL[e], ENC_COLOR[e], "line") for e in ENC_B],
+           box[0] + 22, box[1] + 24)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--e1", default="results/e1p/all_e1.csv")
-    ap.add_argument("--e3dir", default="results/work/e3")
+    ap.add_argument("--e1b", default="results/e1b_semantic_only_all.csv")
+    ap.add_argument("--e3dirs", default="results/work/e3,results/e3full")
     ap.add_argument("--out", default="figures/fig2_encoding_strength.png")
     a = ap.parse_args()
 
-    e1 = read_csvs(a.e1)
-    e3 = read_csvs(os.path.join(a.e3dir, "*.csv"))
+    e1 = read_csvs(a.e1) + [r for r in read_csvs(a.e1b)]
+    e3 = read_csvs(a.e3dirs)
     print("E1 rows %d | E3 rows %d" % (len(e1), len(e3)))
 
     img = Image.new("RGB", (W, H), BG)
