@@ -87,7 +87,10 @@ def _seeded_match(idx: _MatchIndex, Tnx, root_t, seed_g, max_backtracks=4000):
     order, seen, q = [], {root_t}, [root_t]
     while q:
         n = q.pop(0)
-        for nb in list(succ_t[n]) + list(pred_t[n]):
+        # 必须 sorted：succ_t/pred_t 是集合，哈希随机化下迭代顺序随进程变化，
+        # BFS 层序随之变化 -> _seeded_match 返回不同合法嵌入 -> 归约不可复现。
+        # （与下方 cand 的 sorted 同为可复现性硬要求，勿改回 list()。）
+        for nb in sorted(succ_t[n]) + sorted(pred_t[n]):
             if nb not in seen:
                 seen.add(nb)
                 order.append(nb)
@@ -264,7 +267,11 @@ class TeRedOperator(ReductionOperator):
 
         # ---- 构造归约图节点 ----
         Gp = CanonicalGraph(G.gid + ":tered")
-        for nid in kept:
+        # 按原图顺序插入（而非遍历 kept 集合）：Gp 节点的插入顺序决定后续
+        # 词典/序列化字节序，虽不影响语义，但会让两次同参运行产出不同 pkl。
+        for nid in G.nodes:
+            if nid not in kept:
+                continue
             Gp.nodes[nid] = copy.deepcopy(G.nodes[nid])
             if nid in G.labels:
                 Gp.labels[nid] = G.labels[nid]

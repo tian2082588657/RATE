@@ -1,0 +1,4 @@
+dataset,fig,encoding,file,rec_tag,n_nodes_orig,n_edges_orig,n_nodes_Gp,n_edges_Gp,n_dim,top_k,max_total,max_alerts,v4_scale,runtime_s,n_gt,n_alerts,alert_TP,alert_P,node_cov,F1_alert,best_F1_alert,best_b,node_best_f1,node_auc,F1_alert@1,F1_alert@2,F1_alert@3,F1_alert@5,F1_alert@10,F1_alert@20
+e5_cadets,tered,none,bin.117,atfull,267500,9393683,257577,7476616,13,100,16000,20,raw,33.0,38,2,0,0.0,0.0,0.0,0.0,0,0.0051,0.6277,0.0,0.0,,,,
+e5_cadets,tered,dual_naive,bin.117,atfull,267500,9393683,257577,7476616,29,100,16000,20,raw,37.2,38,20,8,0.4,0.6579,0.4975,0.6065,12,0.1839,0.8717,0.4167,0.3448,0.2941,0.3974,0.5366,0.4975
+e5_cadets,tered,rate,bin.117,atfull,267500,9393683,257577,7476616,29,100,16000,20,raw,37.6,38,20,8,0.4,0.6842,0.5049,0.6154,10,0.1839,0.8841,0.449,0.3667,0.3099,0.3688,0.6154,0.5049
