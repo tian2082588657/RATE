@@ -1,0 +1,72 @@
+% ===== gen_paper_tex: files per group = 7 =====
+
+% ==== tab:main (cols: node best-F1 | node cov | F1@5 | F1@10 | orig recall | load) ====
+  identity     & 0.1241 & 0.608 & 0.374 & 0.357 & 0.537 & 2465 \\   % n=7
+  TeRed+count  & 0.1360 & 0.743 & 0.432 & 0.471 & 0.465 & 1792 \\   % n=7
+  TeRed+RATE   & 0.1389 & 0.749 & 0.530 & 0.493 & --- & 1892 \\   % n=7
+
+% ==== tab:abl-a1 (pipeline; best alert-F1 | F1@5) ====
+  base         & 0.593 & 0.743 & 0.743 \\
+  legacy_agg   & 0.495 & 0.624 & 0.646 \\
+  no_bfs       & 0.041 & 0.036 & 0.036 \\
+  bfs_q50      & 0.620 & 0.723 & 0.730 \\
+  bfs_q90      & 0.378 & 0.330 & 0.352 \\
+  % F1@5 variant:
+  base         & 0.374 & 0.432 & 0.530 \\
+  legacy_agg   & 0.296 & 0.365 & 0.455 \\
+  no_bfs       & 0.038 & 0.030 & 0.030 \\
+  bfs_q50      & 0.428 & 0.432 & 0.411 \\
+  bfs_q90      & 0.218 & 0.138 & 0.115 \\
+
+% ==== tab:abl-a3 (ranking key, TeRed+RATE, fixed budgets) ====
+  within-cluster max (reported)  & 0.574 & 0.611 & 0.550 & 0.479 & 0.515 & 0.351 \\
+  cluster mean mixture           & 0.484 & 0.569 & 0.550 & 0.443 & 0.277 & 0.233 \\
+  within-cluster P95             & 0.289 & 0.225 & 0.224 & 0.197 & 0.141 & 0.157 \\
+
+% ==== tab:abl-v4 (features, TeRed+count; node best-F1 | F1@5 | cov | delta node) ====
+  full (three features)          & 0.1360 & 0.432 & 0.743 & --- \\
+  $-$ log-degree                 & 0.0956 & 0.462 & 0.615 & -30\% \\
+  $-$ out/in ratio               & 0.1360 & 0.432 & 0.743 & +0\% \\
+  $-$ self-loop flag             & 0.1856 & 0.635 & 0.710 & +36\% \\
+
+% ==== tab:abl-enc (identical reduced graph; node best-F1 | F1@5 | F1@10 | cov) ====
+  dual-channel edge count (reduction-blind)      & 0.1360 & 0.432 & 0.471 & 0.743 \\   % n=7 enc=dual_naive grp=A5
+  dual-channel $\Sigma\mu$ mass-weighted         & 0.1361 & 0.479 & 0.515 & 0.765 \\   % n=7 enc=rate grp=A1
+  count $+$ collapse-ratio (= reported TeRed+RATE) & 0.1389 & 0.530 & 0.493 & 0.749 \\   % n=7 enc=rate_ratio grp=A5
+  collapse-ratio channel only                    & 0.1375 & 0.541 & 0.496 & 0.752 \\   % n=7 enc=rate_ratio_only grp=A5
+  rank-normalised mass-weighted                  & 0.1378 & 0.498 & 0.487 & 0.740 \\   % n=7 enc=rate_rank grp=A5
+  single-channel mass-weighted                   & 0.0657 & 0.443 & 0.364 & 0.686 \\   % n=7 enc=rate_single grp=A5
+  no topology encoding                           & 0.0056 & 0.000 & --- & 0.000 \\   % n=7 enc=none grp=A5
+
+% ==== tab:abl-budget (fixed-budget F1@b) ====
+  identity     & 0.425 & 0.387 & 0.395 & 0.374 & 0.357 & 0.363 \\
+  TeRed+count  & 0.590 & 0.598 & 0.493 & 0.432 & 0.471 & 0.343 \\
+  TeRed+RATE   & 0.561 & 0.617 & 0.559 & 0.530 & 0.493 & 0.337 \\
+
+% ==== tab:runtime (scoring stage) ====
+  % file & identity nodes & tered nodes & identity s & tered s
+  bin.116    & 287061 & 275843 & 45.9 & 34.7 \\
+  bin.117    & 267500 & 257566 & 48.7 & 35.2 \\
+  bin.118    & 265865 & 256554 & 47.7 & 35.4 \\
+  bin.119@500000 & 18635 & 16849 & 7.2 & 5.0 \\
+  bin.120    & 295765 & 285710 & 43.5 & 35.1 \\
+  bin.6@400000 & 24507 & 22250 & 6.6 & 5.1 \\
+  bin.7@400000 & 17797 & 16272 & 6.7 & 5.3 \\
+  % 合计 identity=206.3s tered=155.8s  (-24.5%)
+
+% ==== tab:origunit (common unit: alerts mapped back to original graph) ====
+  identity     & 0.537$\pm$0.221 & 0.258$\pm$0.110 & 0.188 & 0.487 \\   % n=7
+  TeRed+count  & 0.465$\pm$0.280 & 0.155$\pm$0.060 & 0.100 & 0.537 \\   % n=7
+
+% ---- GT 存活/塌缩统计 (TeRed+RATE 行) ----
+  bin.116    orig_gt= 34 kept= 19 absorbed= 15 boundary= 0 worstDdeg=  0.0 regions=5000 removed=21218
+  bin.117    orig_gt= 30 kept= 19 absorbed= 11 boundary= 0 worstDdeg=  0.0 regions=4762 removed=19458
+  bin.118    orig_gt= 27 kept= 15 absorbed= 12 boundary= 0 worstDdeg=  0.0 regions=4531 removed=18373
+  bin.119@500000 orig_gt= 10 kept=  3 absorbed=  7 boundary= 0 worstDdeg=  0.0 regions=1059 removed=3904
+  bin.120    orig_gt= 21 kept= 11 absorbed= 10 boundary= 0 worstDdeg=  0.0 regions=4736 removed=19527
+  bin.6@400000 orig_gt=  6 kept=  2 absorbed=  4 boundary= 0 worstDdeg=  0.0 regions=1521 removed=5299
+  bin.7@400000 orig_gt=  8 kept=  3 absorbed=  5 boundary= 0 worstDdeg=  0.0 regions=1040 removed=3605
+  % 合计 orig_gt=136 kept=72 absorbed=64 (52.9% 存活) boundary=0 worst|Δdeg|=0.0
+
+% ==== 节点级配对（rate_ratio vs dual_naive，A5 组同图同管线） ====
+  n=7 胜5/负0/平2  均值 0.1389 vs 0.1360

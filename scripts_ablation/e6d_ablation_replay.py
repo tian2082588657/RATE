@@ -49,7 +49,12 @@ from scripts.e5_f1_eval import _edges_index, resolve_name, find_templates
 from scripts.e6_alert_eval import build_adj, parse_spec
 from scripts.e6b_alert_replay import load_res
 
-V4_COLS = ["log_deg", "out_in_ratio", "self_loop"]  # nbr_type_div 已于 2026-09-11 删除（死重列）
+# ⚠️ 必须与 features/v4extras.py 的 extend_with_v4 实际追加列一一对应：
+#    该函数恒追加 4 列 [log_deg, out_in_ratio, nbr_type_div, self_loop]。
+#    2026-09-22 修复：此前这里只列 3 列（nbr_type_div 被误删），
+#    导致 A4 的置零索引整体左移一格——"drop log_deg" 实际删的是 out_in_ratio，
+#    "drop out_in_ratio" 实际删的是死重列 nbr_type_div（≈base）。0922 的 A4 表已按修复后重跑。
+V4_COLS = ["log_deg", "out_in_ratio", "nbr_type_div", "self_loop"]
 BUDGETS = [1, 2, 3, 5, 10, 20]
 
 

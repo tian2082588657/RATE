@@ -65,7 +65,8 @@ MARKER = {"semantic_only": "o", "none": "s", "rate_single": "s",
 ENC_B = ["none", "rate"]
 ENC_B_LABEL = {"none": "no-degree encoder", "rate": "full encoder (RATE)"}
 
-PROD_CUT = 15.0          # 生产设置（7 分区聚合）的边归约率，仅作参考线
+PROD_CUT = 21.4          # 生产设置（7 分区聚合）的边归约率，仅作参考线
+                         # 2026-09-22 更新：可复现归约下 38,673,370 -> 30,412,456 边 (−21.4%)
 
 
 def _font(size, bold=False):
@@ -257,7 +258,7 @@ def legend(d, items, x, y, dy=34):
 
 def panel_a(d, box, e1):
     """编码谱系：未归约 / 归约 x 五种编码 的节点级 best-F1（7 分区均值）。"""
-    p = Panel(d, box, "(a) Encoding spectrum, node best-$F_1$",
+    p = Panel(d, box, "(a) Encoding spectrum, node best-F1",
               "topology encoding", "")
     vals = {}
     for fig in ("identity", "tered"):
@@ -303,7 +304,7 @@ def panel_b(d, box, e3):
     只画归约图上的点：未归约图是另一个正集（reduced-unit 不可比），
     不能把 x=0 的 identity 行接进同一曲线。"""
     p = Panel(d, box, "(b) Detection under increasing reduction",
-              "edge-reduction ratio (%)", "node best-$F_1$")
+              "edge-reduction ratio (%)", "node best-F1")
     per = defaultdict(list)                       # (partition, enc) -> [(cut%, f1)]
     for r in e3:
         enc, part = r.get("encoding"), r.get("file")
@@ -332,7 +333,7 @@ def panel_b(d, box, e3):
     # 参考线：生产设置的归约率（标签放在线右侧中部，避开顶部图例）
     xp = p.px(PROD_CUT)
     d.line([(xp, p.y0), (xp, p.y1)], fill=(190, 120, 120), width=2)
-    d.text((xp + 6, p.py(ymax * 0.52)), "production setting, 15%",
+    d.text((xp + 6, p.py(ymax * 0.52)), "production setting, 21.4%",
            font=F_NOTE, fill=(150, 80, 80))
 
     # 逐分区曲线：先画无度列族，再画全编码族（后者更重要，压在上层）
